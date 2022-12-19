@@ -1,0 +1,94 @@
+[
+    {
+        "id": "1",
+        "asignatura":{
+            "codigo": "is-341",
+            "nombre": "sistemas digitales y arquitectura de computadoras",
+            "horario":{
+                "dia": "Mar",
+                "hora":{
+                    "inicio": 7,
+                    "fin": 9,
+                    "indicador":{
+                        "inicio": "am",
+                        "fin": "am"
+                    }
+                }
+            },
+            "vacantes": 15
+        },
+        "docente": {
+            "nombres": "Cristian",
+            "apellidos": "Lezama Cuellar"
+        }
+    },
+    {
+        "id": "2",
+        "asignatura":{
+            "codigo": "is-181",
+            "nombre": "Algoritmos y solución de problemas",
+            "horario":{
+                "dia": "jue",
+                "hora":{
+                    "inicio": 11,
+                    "fin": 1,
+                    "indicador":{
+                        "inicio": "am",
+                        "fin": "pm"
+                    }
+                }
+            },
+            "vacantes": 13
+        },
+        "docente": {
+            "nombres": "Manuel",
+            "apellidos": "Lagos Barzola"
+        }
+    },
+    {
+        "id": "3",
+        "asignatura":{
+            "codigo": "is-181",
+            "nombre": "Algoritmos y solución de problemas",
+            "horario":{
+                "dia": "jue",
+                "hora":{
+                    "inicio": 3,
+                    "fin": 5,
+                    "indicador":{
+                        "inicio": "pm",
+                        "fin": "pm"
+                    }
+                }
+            },
+            "vacantes": 13
+        },
+        "docente": {
+            "nombres": "José",
+            "apellidos": "Gerrero"
+        }
+    },
+    {
+        "id": "4",
+        "asignatura":{
+            "codigo": "is-181",
+            "nombre": "Algoritmos y solución de problemas",
+            "horario":{
+                "dia": "jue",
+                "hora":{
+                    "inicio": 5,
+                    "fin": 7,
+                    "indicador":{
+                        "inicio": "pm",
+                        "fin": "pm"
+                    }
+                }
+            },
+            "vacantes": 13
+        },
+        "docente": {
+            "nombres": "Yudith",
+            "apellidos": "Menesses"
+        }
+    }
+]
