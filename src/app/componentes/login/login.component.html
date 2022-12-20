@@ -1,1 +1,48 @@
-<p>login works!</p>
+<app-loading [text]="'Iniciando sesión'" *ngIf="loading"></app-loading>
+
+<div class="body">
+  <div class="main">
+    <div class="title">
+        <h1>Sistema de matrícula EPIS-UNSCH</h1>
+    </div>
+    <div class="container">
+        <div class="icades">
+            <div class="text">
+                <span>I</span>
+                <span>C</span>
+                <span>A</span>
+                <span>D</span>
+                <span>E</span>
+                <span>S</span>
+            </div>
+            <div class="logo">
+                <img src="../../../assets/logo_icades.png" alt="logo-icades" width="200px">
+            </div>
+        </div>
+        <div class="inicio">
+            <div class="button" id="button" (click)="loginWithGoogle()">
+                <i class="fa-brands fa-google"></i>
+                <span>Iniciar sesión con Google</span>
+            </div>
+            <div class="description">
+                <p><strong>Nota: </strong>Iniciar sesión con correo institucional, de lo contrario tu matrícula a los distintos laboratorios no serán efectivos, además evalúe bien las instrucciones de uso presentadas en el sistema.</p>
+            </div>
+        </div>
+        <div class="ceis">
+            <div class="text">
+                <span>C</span>
+                <span>E</span>
+                <span>I</span>
+                <span>S</span>
+            </div>
+            <div class="logo">
+                <img src="../../../assets/logosistemas.png" alt="logo-sistemas" width="200px">
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+<div class="fotter">
+  <span>@ copyright Franklin Figueroa and Miguel Ramirez 2022.</span>
+</div>

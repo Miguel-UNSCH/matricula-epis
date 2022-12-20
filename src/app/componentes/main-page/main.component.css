@@ -1,0 +1,378 @@
+
+.main
+{
+    width: 100%;
+    height: 64px;
+}
+
+.container
+{   
+    display: flex;
+    width: 100%;
+    direction: column;
+}
+
+.barra-lateral
+{
+  transition: all ease-in-out 400ms;
+    position: fixed;
+    z-index: 20;
+    background-color: var(--bg-color-barra-lateral);
+    width: 250px;
+    height: 100vh;
+
+    color: var(--text-color);
+}
+
+
+.escuela
+{
+    position: relative;
+    font-family: 'Zen Dots', cursive;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+
+    height: 8rem;
+}
+
+.escuela .logo img
+{
+    width: 70px
+}
+
+.escuela .nombre-escuela{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--logo-text-color);
+
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.escuela .nombre-escuela span {
+  font-family: 'Zen Dots';
+}
+
+.escuela .button
+{   
+    position: absolute;
+    top: 47px;
+    right: -15px;
+
+    background-color: var(--button-color);
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+}
+
+.escuela .button-left
+{
+    display: flex;
+}
+
+.escuela .button-right
+{
+    display: none;
+}
+
+.separator
+{
+    width: 100%;
+    height: 2px;
+    background-color: var(--separator-color);
+}
+
+.items
+{
+    display: flex;
+    flex-direction: column;
+    padding-top: 2rem;
+}
+
+.item
+{   transition: all ease-in-out 450ms;
+    height: 3.5rem;
+
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    padding-left: 2rem;
+}
+
+.item i
+{
+    font-size: 1.2rem;
+}
+
+.item.active
+{ transition: all ease-in-out 450ms;
+    background-color: #393939;
+    color: var(--text-hover-color)
+}
+
+.item:hover
+{
+  transition: all ease-in-out 450ms;
+    background-color: #393939;
+    color: var(--text-hover-color);
+    cursor: pointer;
+}
+
+.hide{
+  transition: all ease-in-out 300ms;
+    width: 4rem;
+}
+
+.hide .escuela .nombre-escuela{
+  transition: all ease-in-out 450ms;
+    display: none;
+}
+
+.hide .escuela .logo img
+{
+  transition: all ease-in-out 450ms;
+    width: 3rem;
+}
+
+.hide .escuela .button-left
+{
+  transition: all ease-in-out 450ms;
+    display: none;
+}
+
+.hide .escuela .button-right
+{
+  transition: all ease-in-out 450ms;
+    display: flex;
+}
+
+.hide .items .item span
+{
+  transition: all ease-in-out 450ms;
+    display: none;
+}
+
+.hide .items .item
+{
+  transition: all ease-in-out 450ms;
+    padding: 0;
+    align-items: center;
+    justify-content: center;
+}
+
+.hide .items .item .docente-dsp
+{
+  transition: all ease-in-out 450ms;
+    display: none;
+}
+
+.cuerpo
+{
+    width: 100%;
+}
+
+.navbar
+{   
+  position: fixed;
+  top: 0;
+  background-color: var(--bg-color-navbar);
+  height: 4rem;
+  display: flex;
+  justify-content: space-between;
+  z-index: 2;
+  width: 100%;
+
+}
+
+.navbar .title
+{
+    padding-left: 4rem;
+    width: 80%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navbar .title
+{
+    color: var(--logo-text-color);
+    font-family: 'Zen Dots', cursive;
+    text-align: center;
+    font-size: 16px;
+}
+
+@media (max-width: 840px)
+{
+    .navbar .title h2
+    {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 565px)
+{
+    .navbar .title h2
+    {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 300px)
+{
+    .navbar .title h2
+    {
+        font-size: .8rem;
+    }
+}
+
+.navbar .user
+{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.navbar .user .separator-column
+{
+    width: 2px;
+    height: 100%;
+    background-color: var(--separator-color);
+}
+
+.navbar .user .user-info
+{
+    margin: 0 1rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.navbar .user .user-info .photo
+{
+    display: flex;
+    width: 50px;
+    height: 50px;
+
+    overflow: hidden;
+} 
+
+.navbar .user .user-info .photo img{
+    width: 50px;
+    border-radius: 50%;
+    border: 3px solid var(--button-color);
+}
+
+.navbar .user .user-info .desc {
+    text-align: center;
+    padding: 0px 10px;
+}
+
+.navbar .user .user-info .desc .name{
+    color: var(--logo-text-color);
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.navbar .user .user-info .desc .rol
+{
+    color: var(--text-color);
+    font-weight:lighter;
+    font-size: 12px
+}
+
+@media (max-width: 1128px)
+{
+    .navbar .user .user-info .desc
+    {
+        display: none;
+    }
+}
+
+.navbar .opciones
+{
+    display: none;
+
+    background-color: var(--bg-color-navbar);
+    position: absolute;
+    top: 5.3rem;
+    right: .3rem;
+    border-radius:.5rem;
+
+    width: 13rem;
+}
+
+.navbar .opciones .item
+{
+    color: var(--button-color)
+}
+.navbar .opciones .perfil
+{
+    border-radius: .5rem .5rem 0 0;
+}
+
+.navbar .opciones .exit
+{
+    margin: .5rem 0;
+}
+
+.navbar .opciones .item:hover
+{
+    background-color: #5e5a5a;
+}
+
+.footer-bar{
+  position: fixed;
+  top: calc(100% - 5%);
+  z-index: 2;
+  height: 60px;
+  width: 100%;
+  background-color: #393939;
+  text-align: center;
+  margin-left: 250px;
+}
+.footer-bar span{
+  color: var(--text-color);
+  font-family: 'Zen Dots';
+  font-size: 12px;
+  font-weight: lighter;
+  align-self: center;
+}
+
+.barra-lateral:has(.hide),
+.footer-bar{
+  transition: all ease-in-out 300ms;
+  margin-left: 4rem;
+}
+
+.main-container{
+  position: relative;
+  top: 0px;
+  margin-left: 4rem;
+  padding: 15px 20px;
+  background-color: #7e838c;
+  padding-bottom: 65px;
+  margin-top: 64px;
+}
+
+.lateral-active{
+  transition: all ease-in-out 400ms;
+  margin-left: 250px;
+}
+
+.rotate-pointer{
+  transition: all ease-in-out 1000ms;
+  transform: rotate(-180deg);
+}
+

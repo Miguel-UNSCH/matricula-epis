@@ -1,0 +1,119 @@
+<app-forbidden *ngIf="!permitido"></app-forbidden>
+
+<div *ngIf="permitido" class="app">
+  <main class="main">
+    <div class="container">
+        <div #lateral class="barra-lateral hide" id="barra-lateral">
+            <div #escuela class="escuela">
+                <div class="logo">
+                    <img src="../../../assets/logosistemas.png" alt="logo-sistemas">
+                </div>
+                <div class="nombre-escuela">
+                    <span>EPIS</span>
+                    <span>UNSCH</span>
+                </div>
+
+                <div #showButton class="button button-show-hide" id="button-left">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </div>
+            </div>
+            <div class="separator"></div>
+            <div class="items">
+                <div class="item active">
+                    <i class="fa-solid fa-list-check"></i>
+                    <span>Horarios</span>
+                </div>
+                <div class="item">
+                    <i class="fa-solid fa-person-chalkboard"></i>
+                    <span>Docentes</span>
+                    <div class="docente-dsp">
+                        <i class="fa-solid fa-chevron-down" ></i>
+                    </div>
+                </div>
+                <div class="item">
+                    <i class="fa-solid fa-sitemap"></i>
+                    <span>Mis cursos</span>
+                </div>
+                <div class="item">
+                    <i class="fa-solid fa-money-check-dollar"></i>
+                    <span>Mis deudas</span>
+                </div>
+                <div class="item">
+                    <i class="fa-solid fa-money-check"></i>
+                    <span>Mis pagos</span>
+                </div>
+                <div class="item">
+                    <i class="fa-sharp fa-solid fa-gears"></i>
+                    <span>Ajustes</span>
+                </div>
+                <div class="item">
+                    <i class="fa-solid fa-user"></i>
+                    <span>Usuario</span>
+                </div>
+            </div>
+        </div>
+        <div class="cuerpo">
+            <div class="navbar">
+                <div class="title">
+                    SISTEMA DE MATRÍCULA EPIS UNSCH
+                </div>
+                <div class="user">
+                    <div class="separator-column"></div>
+                    <div #userBar class="user-info">
+                        <div class="photo" id="photo">
+                            <img [src]="$User.photoURL ||'https://media.istockphoto.com/id/1393750072/vector/flat-white-icon-man-for-web-design-silhouette-flat-illustration-vector-illustration-stock.jpg?b=1&s=612x612&w=0&k=20&c=Dnxc_cOvh1zQjTE8Za9MMADydkRc8lSKzIEX6ej9H8g='" alt="foto-perfil">
+                        </div>
+                        <div class="desc">
+                            <div class="name">
+                              {{$User.displayName}}
+                            </div>
+                            <div class="rol">
+                                Estudiante
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="opciones" id="opciones">
+                    <div class="item perfil">
+                        <i class="fa-solid fa-user"></i>
+                        <span>Perfil</span>
+                    </div>
+                    <div class="item">
+                        <i class="fa-sharp fa-solid fa-gears"></i>
+                        <span>Ajustes</span>
+                    </div>
+                    <div class="item">
+                        <i class="fa-solid fa-sitemap"></i>
+                        <span>Mis cursos</span>
+                    </div>
+                    <div class="item">
+                        <i class="fa-solid fa-money-check-dollar"></i>
+                        <span>Mis deudas</span>
+                    </div>
+                    <div class="item">
+                        <i class="fa-solid fa-money-check"></i>
+                        <span>Mis pagos</span>
+                    </div>
+                    <div class="separator">                 </div>
+                    <div class="item exit">
+                        <i class="fa-solid fa-power-off"></i>
+                        <span>Cerrar sesión</span>
+                    </div>
+                </div>
+            </div>
+        </div>        
+    </div>
+    
+    <div #container class="main-container">
+      <!-- Aqui va el contenido de leos hijos de este dato -->
+      <router-outlet></router-outlet>
+    </div>
+
+    <footer class="footer-bar">
+      <span>
+        @copyright Franklin F.P And Miguel R.G 2022 Todos los derechos reservados.
+      </span>
+    </footer>
+
+</main>
+</div>
