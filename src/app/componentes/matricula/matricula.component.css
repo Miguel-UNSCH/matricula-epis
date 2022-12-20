@@ -1,0 +1,206 @@
+.matricula-container
+{
+    height: 100%;
+    width: 100%;
+    background-color: #7C7C7C;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1rem;
+    overflow-y: auto;
+}
+
+.matricula-container .matricula-header
+{
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    gap: .8rem;
+    font-size: 1.3rem;
+}
+
+.matricula-container .matricula-separador
+{
+    background-color: #404040;
+    height: 90%;
+    width: 3px;
+    border-radius: 1.5px;
+}
+
+.matricula-container .matricula-desc
+{
+    display: flex;
+    gap: .4rem;
+    align-items: center;
+    font-size: 1rem;
+    color: #dadada;
+}
+
+.house
+{
+    color: #FFC736;
+}
+
+.matricula-content
+{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.matricula-table-container
+{
+    background-color: #d9d9d9;
+    border-radius: .3rem;
+    width: 100%;
+    padding: .5rem;
+    display: flex;
+    gap: .5rem;
+}
+
+.table 
+{
+    width: 100%;
+    border-radius: .3rem;
+    overflow-x: auto;
+}
+
+.table table
+{
+    width: 100%;
+    text-align: center;
+    border-radius: .3rem;
+    border-collapse: collapse; 
+}
+
+.table.description
+{
+    width: 70%;
+}
+
+.table.costo
+{
+    width: 30%;
+}
+
+@media (max-width:870px){
+    .matricula-table-container.description{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .table.description
+    {
+        width: 100%;
+    }
+
+    .table.costo
+    {
+        width: 100%;
+    }
+}
+
+
+.table table thead,tfoot
+{
+    background-color: #404040;
+    color: #fff;
+}
+
+.table tfoot
+{
+    color: #FFC736;
+    font-weight: 600;
+}
+
+.table table th
+{
+    font-size: .8rem;
+    font-weight: 500;
+}
+
+.table table tbody
+{
+    background-color: #373737;
+    color: #f2f2f2;
+}
+
+.table table th,td
+{
+    border: 1px solid #5b5b5b;
+    padding: .5rem;
+    font-size: .8rem;
+}
+
+.table table tbody td:nth-child(2),
+.table table tbody td:nth-child(4),
+.table.description table tbody td:nth-child(1){
+    text-transform: uppercase;
+}
+
+.table table tbody td:nth-child(3),
+.table table tbody td:nth-child(6),
+.table.description table tbody td:nth-child(2),
+.table.description table tbody td:nth-child(4){
+    text-transform: capitalize;
+}
+
+.table table tbody td:nth-child(3) {
+    text-align: left;
+}
+
+.table.description table tbody td:nth-child(2) {
+    text-align: left;
+}
+
+.table.description table tbody td:nth-child(3) {
+    text-align: center;
+}
+
+.table.costo table tbody td:nth-child(1) {
+    text-align: left;
+}
+
+.table.costo table tfoot td:nth-child(1) {
+    text-align: right;
+}
+
+.matricula-button-container
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.button
+{
+    border: 0.2rem var(--button-color) solid;
+    border-radius: 0.4rem;
+    color: var(--button-color);
+    background-color: transparent;
+    padding: .3rem;
+    cursor: pointer;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    gap: 0.3rem;
+    margin: 0 auto;
+    transition: all ease-in-out 250ms;
+}
+
+.matricula-button-container .button
+{
+    font-family: 'Zen Dots', cursive;
+    padding: .5rem;
+    width: 20rem;
+    min-width: 15rem;
+    font-size: 1rem;
+    gap: 1rem;
+}
+
+.button:hover
+{
+    color: var(--text-color);
+    background-color: var(--button-color);
+}

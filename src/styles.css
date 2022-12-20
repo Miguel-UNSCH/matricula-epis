@@ -1,4 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+:root
+{
+    --text-color: #ffffff;
+    --logo-text-color: #FFC736;
+    --button-color: #ffc736
+}
 
 @import url("https://fonts.googleapis.com/css?family=Share+Tech+Mono|Montserrat:700");
 

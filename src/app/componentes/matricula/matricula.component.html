@@ -1,0 +1,115 @@
+<div class="matricula-container">
+    <div class="matricula-header">
+        <div class="matricula-title">
+            <span>Matrícula</span>
+        </div>
+        <div class="matricula-separador"></div>
+        <div class="matricula-desc">
+            <i class="fa-solid fa-house house"></i>
+            <i class="fa-solid fa-chevron-right"></i>
+            <span>Matrícula</span>
+        </div>
+    </div>
+    <div class="matricula-content">
+        <div class="matricula-table-container">
+            <div class="table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>N°</th>
+                            <th>CÓD. DE CURSO</th>
+                            <th>ASIGNATURA</th>
+                            <th>HORARIO</th>
+                            <th>VACANTE</th>
+                            <th>DOCENTE</th>
+                            <th>ACCIONES</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let dato of Datos">
+                            <td>{{ dato.id }}</td>
+                            <td>{{ dato.asignatura.codigo }}</td>
+                            <td>{{ dato.asignatura.nombre }}</td>
+                            <td>{{ dato.asignatura.horario.dia }} {{ dato.asignatura.horario.hora.inicio }} {{ dato.asignatura.horario.hora.indicador.inicio }} - {{ dato.asignatura.horario.hora.fin }} {{ dato.asignatura.horario.hora.indicador.fin }}</td>
+                            <td>{{ dato.asignatura.vacantes }}</td>
+                            <td>{{ dato.docente.nombres }} {{ dato.docente.apellidos }}</td>
+                            <td>
+                                <button class="button button-add {{ dato.id }}-18fgjjshhs-{{ dato.asignatura.codigo }}x-33-{{ dato.asignatura.vacantes }}">
+                                    <i class="fa-solid fa-folder-plus"></i>
+                                    <span>Agregar</span>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="matricula-table-container description">
+            <div class="table description">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>CÓD.</th>
+                            <th>ASIGNATURA</th>
+                            <th>VACANTE</th>
+                            <th>DOCENTE</th>
+                            <th>ACCIONES</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let curso of Cursos">
+                            <td>{{ curso.codigo }}</td>
+                            <td>{{ curso.nombre }}</td>
+                            <td>{{ curso.vacantes }}</td>
+                            <td>{{ curso.docente.nombres }} {{ curso.docente.apellidos }}</td>
+                            <td>
+                                <button class="button button-remove {{ curso.id }}-18hjhjdhjhs-{{ curso.codigo }}x-33fdfd-{{ curso.vacantes }}">
+                                    <i class="fa-solid fa-folder-minus"></i>
+                                    <span>Quitar</span>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="table costo">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>DESCRIPCIÓN</th>
+                            <th>COSTO </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Derecho de Centro</td>
+                            <td>S/. 10.00</td>
+                        </tr>
+                        <tr>
+                            <td>Matrícula regular
+                            </td>
+                            <td>S/. 5.00</td>
+                        </tr>
+                        <tr>
+                            <td>Deuda personal
+                            </td>
+                            <td>S/. 70.00</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td>TOTAL A PAGAR</td>
+                            <td>S/. 85.00</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="matricula-button-container">
+        <div class="button">
+            <i class="fa-solid fa-file-pdf"></i>
+            <span>Generar Matrícula</span>
+        </div>
+    </div>
+</div>

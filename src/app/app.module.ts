@@ -15,6 +15,7 @@ import { NotFundComponent } from './componentes/not-fund/not-fund.component';
 import { MainComponent } from './componentes/main-page/main.component';
 import { LoadingComponent } from './componentes/loading/loading.component';
 import { ForbiddenComponent } from './componentes/forbidden/forbidden.component';
+import { MatriculaComponent } from './componentes/matricula/matricula.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { ForbiddenComponent } from './componentes/forbidden/forbidden.component'
     MainComponent,
     LoadingComponent,
     ForbiddenComponent,
+    MatriculaComponent
   ],
   imports: [
     BrowserModule,
