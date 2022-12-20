@@ -3,6 +3,8 @@ import { NotFundComponent } from './componentes/not-fund/not-fund.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './componentes/login/login.component';
+import { MatriculaComponent } from './componentes/matricula/matricula.component';
+import { HorarioComponent } from './componentes/horario/horario.component';
 
 const routes: Routes = [
   {
@@ -21,7 +23,17 @@ const routes: Routes = [
   {
     path: 'usuario',
     component: MainComponent,
-    pathMatch: "full",
+    children: [
+      {
+        path: 'matricula',
+        component: MatriculaComponent
+      },
+      {
+        path: 'horario',
+        component: HorarioComponent
+      }
+    ],
+    // pathMatch: "full"
   },
   {
     path: '**',

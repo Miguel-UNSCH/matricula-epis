@@ -13,9 +13,8 @@ import { UserService } from 'src/app/Services/user/user.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
+
 export class LoginComponent implements OnInit {
-
-
   isUser! : any;
 
   loading: boolean = false;
@@ -49,8 +48,6 @@ export class LoginComponent implements OnInit {
     }, 2000)
   })
 
-  
-
   loginWithGoogle() : void{
     const UserServe = this.userService
     const ALERT = this.alert
@@ -62,6 +59,7 @@ export class LoginComponent implements OnInit {
     function GoMainPage(){
       ROUTE.navigate(['/usuario']);
     }
+    
     function VerifiedEmail(email: any) : boolean {
       let verifiedText = ''
       let dominioEscuela = '27@unsch.edu.pe'
@@ -70,6 +68,7 @@ export class LoginComponent implements OnInit {
         let activate = false
         for(let pos = 0; pos < email.length; pos++){
           if (email[pos] == '@'){
+            verifiedText += email[pos-2] + email[pos-1]
             activate = true
           }
           if (activate){
@@ -77,7 +76,7 @@ export class LoginComponent implements OnInit {
           }
         }
       }
-      return ('27' + verifiedText) == dominioEscuela
+      return verifiedText== dominioEscuela
     } 
     this.userService.loginWhitGoogle().then((data) => {
       this.loading = true;

@@ -16,6 +16,7 @@ import { MainComponent } from './componentes/main-page/main.component';
 import { LoadingComponent } from './componentes/loading/loading.component';
 import { ForbiddenComponent } from './componentes/forbidden/forbidden.component';
 import { MatriculaComponent } from './componentes/matricula/matricula.component';
+import { HorarioComponent } from './componentes/horario/horario.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { MatriculaComponent } from './componentes/matricula/matricula.component'
     MainComponent,
     LoadingComponent,
     ForbiddenComponent,
-    MatriculaComponent
+    MatriculaComponent,
+    HorarioComponent
   ],
   imports: [
     BrowserModule,

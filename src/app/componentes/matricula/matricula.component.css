@@ -83,7 +83,7 @@
     width: 30%;
 }
 
-@media (max-width:870px){
+@media (max-width:1045px){
     .matricula-table-container.description{
         display: flex;
         flex-direction: column;

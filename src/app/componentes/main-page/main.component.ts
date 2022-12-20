@@ -20,6 +20,29 @@ export class MainComponent implements OnInit, AfterViewInit {
   constructor(private userSevice : UserService, private route : Router, private render : Renderer2){
   }
   
+  @ViewChild('items') Items! : ElementRef;
+  btnActive(i: number) {
+    // 0: Horarios
+    // 1: Docentes
+    // 2: Matricula
+    // 3: Mis cursos
+    // 4: Mis deudas
+    // 5: Mis pagos
+    // 6: Ajustes
+    // 7: Usuario
+    const ITEMS = this.Items.nativeElement
+    const DOM = this.render
+
+    for (let j = 0; j < 8; j++){
+      if (ITEMS.children[j].className !== 'item'){
+        DOM.removeClass(ITEMS.children[j], 'active')
+      }
+    }
+
+    if (ITEMS.children[i].className === 'item'){
+      DOM.addClass(ITEMS.children[i], 'active')
+    }
+  }
 
   UserExits(){
     const USER = this.userSevice.getCurrentUser()
@@ -31,6 +54,7 @@ export class MainComponent implements OnInit, AfterViewInit {
         let activate = false
         for(let pos = 0; pos < email.length; pos++){
           if (email[pos] == '@'){
+            verifiedText += email[pos-2] + email[pos-1]
             activate = true
           }
           if (activate){
@@ -38,7 +62,7 @@ export class MainComponent implements OnInit, AfterViewInit {
           }
         }
       }
-      return ('27' + verifiedText) == dominioEscuela
+      return verifiedText == dominioEscuela
     }
     //compueba si hay un usuario
     if(USER){
@@ -72,11 +96,8 @@ export class MainComponent implements OnInit, AfterViewInit {
   // DOM manipulation
   // ViewChilds
   @ViewChild('lateral') Lateral! : ElementRef;
-
   @ViewChild('showButton') ShowButton! : ElementRef;
-  // @ViewChild('escuela') Escuela! : ElementRef;
   @ViewChild('container') container! : ElementRef;
-  // ViewChilds end
   
   ToogleIN = false;
 
@@ -87,17 +108,15 @@ export class MainComponent implements OnInit, AfterViewInit {
     //DOM const
     const DOM = this.render
 
+    // Container element
+    const CONTAINER = this.container.nativeElement
+
     //lateral const
     const LATERAL = this.Lateral.nativeElement
 
     const SHOW_BTN = this.ShowButton.nativeElement
 
-    const CONTAINER = this.container.nativeElement
-
     DOM.listen(SHOW_BTN, 'click', hideShowLateral)
-
-    DOM.listen(LATERAL, 'mouseenter', enterLateral)
-    DOM.listen(LATERAL, 'mouseleave', leaveLateral)
 
     //funcion for events
     function hideShowLateral (e: any){
@@ -115,11 +134,10 @@ export class MainComponent implements OnInit, AfterViewInit {
           element = e.path[0]
         }
         // console.log(element)
-        DOM.addClass(element, 'rotate-pointer')
+        DOM.removeClass(element, 'rotate-pointer')
         // DOM.removeClass(element, 'fa-chevron-left')
         // e.path[0].childNodes[0].className = 'fa-solid fa-chevron-right';
       }else{
-        TOOGLE = true;
         DOM.removeClass(LATERAL, 'hide')
         DOM.addClass(CONTAINER, 'lateral-active')
         if(e.path[0].children[0]){
@@ -129,23 +147,11 @@ export class MainComponent implements OnInit, AfterViewInit {
         }
         // console.log(element)
         // DOM.addClass(element, 'fa-chevron-left')
-        DOM.removeClass(element, 'rotate-pointer')
+        DOM.addClass(element, 'rotate-pointer')
+        TOOGLE = true;
         // e.path[0].childNodes[0].className = 'fa-solid fa-chevron-left';
       }
       // console.log(e.path[0])
-    }
-
-    function enterLateral() {
-      if(!TOOGLE){
-        DOM.removeClass(LATERAL, 'hide')
-      }
-      
-    }
-    function leaveLateral(){
-      if(!TOOGLE){
-        DOM.addClass(LATERAL, 'hide')
-      }
-      
     }
     
   }

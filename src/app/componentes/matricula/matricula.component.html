@@ -26,7 +26,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let dato of Datos">
+                        <tr *ngFor="let dato of Cursos">
                             <td>{{ dato.id }}</td>
                             <td>{{ dato.asignatura.codigo }}</td>
                             <td>{{ dato.asignatura.nombre }}</td>
@@ -34,7 +34,7 @@
                             <td>{{ dato.asignatura.vacantes }}</td>
                             <td>{{ dato.docente.nombres }} {{ dato.docente.apellidos }}</td>
                             <td>
-                                <button class="button button-add {{ dato.id }}-18fgjjshhs-{{ dato.asignatura.codigo }}x-33-{{ dato.asignatura.vacantes }}">
+                                <button (click)="agregar(dato)" class="button button-add">
                                     <i class="fa-solid fa-folder-plus"></i>
                                     <span>Agregar</span>
                                 </button>
@@ -57,13 +57,13 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let curso of Cursos">
-                            <td>{{ curso.codigo }}</td>
-                            <td>{{ curso.nombre }}</td>
-                            <td>{{ curso.vacantes }}</td>
+                        <tr *ngFor="let curso of CursosAgregados">
+                            <td>{{ curso.asignatura.codigo }}</td>
+                            <td>{{ curso.asignatura.nombre }}</td>
+                            <td>{{ curso.asignatura.vacantes }}</td>
                             <td>{{ curso.docente.nombres }} {{ curso.docente.apellidos }}</td>
                             <td>
-                                <button class="button button-remove {{ curso.id }}-18hjhjdhjhs-{{ curso.codigo }}x-33fdfd-{{ curso.vacantes }}">
+                                <button (click)="remover(curso)" class="button button-remove">
                                     <i class="fa-solid fa-folder-minus"></i>
                                     <span>Quitar</span>
                                 </button>
