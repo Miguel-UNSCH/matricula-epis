@@ -132,6 +132,19 @@
     font-size: .8rem;
 }
 
+.table table tbody td:nth-child(2),
+.table table tbody td:nth-child(4),
+.table.description table tbody td:nth-child(1){
+    text-transform: uppercase;
+}
+
+.table table tbody td:nth-child(3),
+.table table tbody td:nth-child(6),
+.table.description table tbody td:nth-child(2),
+.table.description table tbody td:nth-child(4){
+    text-transform: capitalize;
+}
+
 .table table tbody td:nth-child(3) {
     text-align: left;
 }

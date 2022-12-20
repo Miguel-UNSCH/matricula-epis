@@ -34,7 +34,7 @@
                             <td>{{ dato.asignatura.vacantes }}</td>
                             <td>{{ dato.docente.nombres }} {{ dato.docente.apellidos }}</td>
                             <td>
-                                <button class="button">
+                                <button class="button button-add {{ dato.id }}-18fgjjshhs-{{ dato.asignatura.codigo }}x-33-{{ dato.asignatura.vacantes }}">
                                     <i class="fa-solid fa-folder-plus"></i>
                                     <span>Agregar</span>
                                 </button>
@@ -57,13 +57,13 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>IS-341</td>
-                            <td>Sistemas Digitales y Arquitectura de Computadoras</td>
-                            <td>15</td>
-                            <td>Cristian Lezama</td>
+                        <tr *ngFor="let curso of Cursos">
+                            <td>{{ curso.codigo }}</td>
+                            <td>{{ curso.nombre }}</td>
+                            <td>{{ curso.vacantes }}</td>
+                            <td>{{ curso.docente.nombres }} {{ curso.docente.apellidos }}</td>
                             <td>
-                                <button class="button">
+                                <button class="button button-del {{ curso.id }}-18hjhjdhjhs-{{ curso.codigo }}x-33fdfd-{{ curso.vacantes }}" onclick="remove(e)">
                                     <i class="fa-solid fa-folder-plus"></i>
                                     <span>Quitar</span>
                                 </button>

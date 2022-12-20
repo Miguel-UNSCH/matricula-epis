@@ -1,6 +1,6 @@
 [
     {
-        "id": "1",
+        "id": 1,
         "asignatura":{
             "codigo": "is-341",
             "nombre": "sistemas digitales y arquitectura de computadoras",
@@ -23,7 +23,7 @@
         }
     },
     {
-        "id": "2",
+        "id": 2,
         "asignatura":{
             "codigo": "is-181",
             "nombre": "Algoritmos y solución de problemas",
@@ -46,7 +46,7 @@
         }
     },
     {
-        "id": "3",
+        "id": 3,
         "asignatura":{
             "codigo": "is-181",
             "nombre": "Algoritmos y solución de problemas",
@@ -69,7 +69,7 @@
         }
     },
     {
-        "id": "4",
+        "id": 4,
         "asignatura":{
             "codigo": "is-181",
             "nombre": "Algoritmos y solución de problemas",

@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import { timeInterval } from 'rxjs';
 import datos from '../../../assets/data/datos.json';
 
 interface DATOS {
-  id: String;
+  id: Number;
   asignatura:{
     codigo: String,
     nombre: String,
@@ -25,15 +26,62 @@ interface DATOS {
   }
 }
 
+interface CURSOS{
+  id: Number;
+  codigo: String,
+  nombre: String,
+  vacantes: Number,
+  docente: {
+    nombres: String,
+    apellidos: String
+  }
+}
+
 @Component({
   selector: 'app-matricula',
   templateUrl: './matricula.component.html',
   styleUrls: ['./matricula.component.css']
 })
 
-export class MatriculaComponent {
+export class MatriculaComponent{
   Datos: DATOS[] = datos;
+  Cursos: CURSOS[] = [];
   constructor(){
-    console.log(this.Datos)
+  }
+
+  ngAfterViewInit(): void {
+    // Agregar cursos
+    const botonesAdd = document.querySelectorAll('.button-add')
+    botonesAdd.forEach(button => {
+      button.addEventListener('click', () => {
+        const a = button.classList[0]
+        const id = Number(a.substring(0, a.indexOf('-')))
+        const selected = this.Datos[id-1]
+        const c = {
+          id: id,
+          codigo: selected.asignatura.codigo,
+          nombre: selected.asignatura.nombre,
+          vacantes: selected.asignatura.vacantes,
+          docente: {
+            nombres: selected.docente.nombres,
+            apellidos: selected.docente.apellidos
+          }
+        }
+        
+        const result = this.Cursos.find(curso => curso.id === c.id)
+        
+        if(result){
+          console.log('ya agregaste el curso')
+        }else
+        {
+          this.Cursos.push(c)
+        }
+        
+      })
+    })
+
+    function remove(e: any) {
+      console.log(e)
+    }
   }
 }
