@@ -1,5 +1,4 @@
 import {Component} from '@angular/core';
-import { timeInterval } from 'rxjs';
 import datos from '../../../assets/data/datos.json';
 
 interface DATOS {
@@ -43,13 +42,15 @@ interface CURSOS{
   styleUrls: ['./matricula.component.css']
 })
 
+
+
 export class MatriculaComponent{
   Datos: DATOS[] = datos;
   Cursos: CURSOS[] = [];
   constructor(){
   }
-
-  ngAfterViewInit(): void {
+   
+  ngAfterViewInit() {
     // Agregar cursos
     const botonesAdd = document.querySelectorAll('.button-add')
     botonesAdd.forEach(button => {
@@ -79,9 +80,18 @@ export class MatriculaComponent{
         
       })
     })
+  }
 
-    function remove(e: any) {
-      console.log(e)
-    }
+  ngAfterViewChecked(){
+    const botonesRemove = document.querySelectorAll('.button-remove')
+    botonesRemove.forEach(button => {
+      button.addEventListener('click', () => {
+        const a = button.classList[0]
+        const id = Number(a.substring(0, a.indexOf('-')))
+        const selected = this.Datos[id-1]
+        const filter = this.Cursos.filter((dato) => dato.id !== selected.id)
+        this.Cursos = filter
+      })
+    })
   }
 }
