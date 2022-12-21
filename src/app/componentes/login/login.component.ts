@@ -76,7 +76,7 @@ export class LoginComponent implements OnInit {
           }
         }
       }
-      return verifiedText== dominioEscuela
+      return verifiedText == dominioEscuela
     } 
     this.userService.loginWhitGoogle().then((data) => {
       this.loading = true;
