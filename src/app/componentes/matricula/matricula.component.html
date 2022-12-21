@@ -107,9 +107,22 @@
         </div>
     </div>
     <div class="matricula-button-container">
-        <div class="button">
+        <div (click)="generarMatricula()" class="button">
             <i class="fa-solid fa-file-pdf"></i>
             <span>Generar Matrícula</span>
+        </div>
+    </div>
+    <div #esquela class="esquela">
+        <div class="esquela-viewer">
+            <div class="esquela-viewer-header">
+                <h3>Imprime tu esquela de pago</h3>
+                <i (click)="cerrarVistaEsquela()" class="fa-solid fa-xmark close-icon"></i>
+            </div>
+            <div class="esquela-viewer-body">
+                <div #esquelaView class="iframe-container">
+                    
+                </div>
+            </div>
         </div>
     </div>
 </div>
