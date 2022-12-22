@@ -22,7 +22,10 @@ import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 export class MatriculaComponent implements OnInit {
   Cursos: CURSOS[] = datos;
   CursosAgregados: CURSOS[] = []; // aqui se guardan los cursos agregados
-  constructor(private render: Renderer2) {}
+  constructor(private render: Renderer2) 
+  {
+    localStorage.setItem('curso', JSON.stringify(this.CursosAgregados));
+  }
 
   agregar(dato: any) {
     const result = this.CursosAgregados.find((curso) => curso.id === dato.id);
@@ -99,7 +102,7 @@ export class MatriculaComponent implements OnInit {
       if (result.isConfirmed && this.CursosAgregados.length > 0) {
         this.abrirVistaEsquela();
       }
-      else{
+      else if (result.isConfirmed && this.CursosAgregados.length === 0) {
         Swal.fire({
           position: 'bottom-end',
           color: 'white',
