@@ -162,9 +162,17 @@
     justify-content: center;
 }
 
-.hide .items .item .docente-dsp {
-    transition: all ease-in-out 200ms;
-    display: none;
+@media (max-width: 900px) {
+    .barra-lateral,
+    .hide{
+        display: none;
+    }
+    .container
+    {
+        display: grid;
+        width: 100%;
+        grid-template-columns: auto;
+    }
 }
 
 .cuerpo {
@@ -184,12 +192,18 @@
 }
 
 .navbar .title {
-    padding-left: 4rem;
     width: 80%;
-
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 1rem;
+    padding: 0 0.3rem;
+}
+
+.navbar .title .logo
+{
+    display: none;
+    width: 3rem;
 }
 
 .navbar .title {
@@ -197,6 +211,14 @@
     font-family: "Zen Dots", cursive;
     text-align: center;
     font-size: 16px;
+}
+
+@media (max-width: 900px) {
+    .navbar .title .logo
+    {
+        transition: all ease-in-out 300ms;
+        display: block
+    }
 }
 
 @media (max-width: 840px) {
@@ -233,6 +255,7 @@
     margin: 0 1rem;
     width: 100%;
     display: flex;
+    gap: .2rem;
     justify-content: space-around;
 }
 
@@ -251,6 +274,10 @@
 }
 
 .navbar .user .user-info .desc {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     text-align: center;
     padding: 0px 10px;
 }
@@ -278,7 +305,7 @@
 
     background-color: var(--bg-color-navbar);
     position: absolute;
-    top: 5.3rem;
+    top: 4.4rem;
     right: 0.3rem;
     border-radius: 0.5rem;
 

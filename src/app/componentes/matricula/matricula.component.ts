@@ -16,6 +16,7 @@ import pdfFonts from 'pdfmake/build/vfs_fonts';
 
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
+
 @Component({
   selector: 'app-matricula',
   templateUrl: './matricula.component.html',
@@ -127,6 +128,39 @@ export class MatriculaComponent implements OnInit {
     });
   }
 
+  desMatricula(){
+    Swal.fire({
+      color: 'white',
+      title: '¿Estás seguro de esto?',
+      text: 'No podrás revertir esto',
+      background: '#404040',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: '¡Sí, continuar!',
+      cancelButtonText: 'Cancelar',
+      confirmButtonColor: '#FFC736',
+      cancelButtonColor: '#F27474',
+      focusCancel: false,
+      focusConfirm: false,
+    }).then((result) => {
+      if (result.isConfirmed && this.CursosAgregados.length > 0) {
+        this.descargarPdf();
+      } else if (result.isConfirmed && this.CursosAgregados.length === 0) {
+        Swal.fire({
+          position: 'bottom-end',
+          color: 'white',
+          title: 'Error',
+          text: 'No agregaste ningún curso',
+          background: '#404040',
+          icon: 'error',
+          showConfirmButton: false,
+          toast: true,
+          timer: 2000,
+        });
+      }
+    });
+  }
+
   // Abrir y cerrar vista esquela
   @ViewChild('esquela') Esquela!: ElementRef;
   abrirVistaEsquela() {
@@ -135,7 +169,7 @@ export class MatriculaComponent implements OnInit {
 
     if (ESQUELA.className === 'esquela') {
       DOM.addClass(ESQUELA, 'esquela-viewer-container');
-      this.generarPdf();
+      this.abrirPdf();
     }
   }
   cerrarVistaEsquela() {
@@ -152,7 +186,6 @@ export class MatriculaComponent implements OnInit {
 
   generarPdf() {
     const USER = this.userSevice.afAuth.currentUser;
-    const ESQUELAVIEW = this.EsquelaView.nativeElement;
 
     const usuario = {
       nombres: USER?.displayName,
@@ -606,11 +639,23 @@ export class MatriculaComponent implements OnInit {
     }
     
     const pdf = pdfMake.createPdf(docDefinition);
+    return pdf
+  }
+
+  abrirPdf(){
+    const ESQUELAVIEW = this.EsquelaView.nativeElement;
+    const pdf = this.generarPdf()
     pdf.getBlob((blob) => {
       let url = URL.createObjectURL(blob);
       this.render.appendChild(ESQUELAVIEW, this.pdfElement);
       this.render.setAttribute(this.pdfElement, 'src', url);
     });
+  }
+
+  descargarPdf(){
+    const USER = this.userSevice.afAuth.currentUser?.displayName;
+    const pdf = this.generarPdf()
+    pdf.download(USER!+'_ORDEN_PAGO')
   }
 
   ngOnInit(): void {

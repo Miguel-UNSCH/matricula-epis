@@ -210,6 +210,21 @@
     background-color: var(--button-color);
 }
 
+.button-mobile
+{
+    display: none;
+}
+
+@media (max-width: 700px){
+    .button-mobile{
+        display: flex;
+    }
+    .button-pc
+    {
+        display: none;
+    }
+}
+
 /* seccion esquela pago */
 
 .esquela
