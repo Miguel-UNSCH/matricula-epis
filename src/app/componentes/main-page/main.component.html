@@ -96,9 +96,10 @@
             <div class="cuerpo">
                 <div class="navbar">
                     <div class="title">
+                        <img class="logo" src="../../../assets/logosistemas.png" alt="logo-sistemas">
                         SISTEMA DE MATRÍCULA EPIS UNSCH
                     </div>
-                    <div class="user">
+                    <div #userCont class="user">
                         <div class="separator-column"></div>
                         <div #userBar class="user-info">
                             <div class="photo" id="photo">
@@ -115,7 +116,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="opciones" id="opciones">
+                    <div #vistaOpciones class="opciones" id="opciones">
                         <div class="item perfil">
                             <i class="fa-solid fa-user"></i>
                             <span>Perfil</span>
@@ -123,6 +124,14 @@
                         <div class="item">
                             <i class="fa-sharp fa-solid fa-gears"></i>
                             <span>Ajustes</span>
+                        </div>
+                        <div class="item" [routerLink]="['/usuario/horario']">
+                            <i class="fa-solid fa-list-check"></i>
+                            <span>Horarios</span>
+                        </div>
+                        <div (click)="btnActive(2)" class="item" [routerLink]="['/usuario/matricula']">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                            <span>Matrícula</span>
                         </div>
                         <div class="item">
                             <i class="fa-solid fa-sitemap"></i>

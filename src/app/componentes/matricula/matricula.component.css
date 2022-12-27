@@ -210,6 +210,21 @@
     background-color: var(--button-color);
 }
 
+.button-mobile
+{
+    display: none;
+}
+
+@media (max-width: 700px){
+    .button-mobile{
+        display: flex;
+    }
+    .button-pc
+    {
+        display: none;
+    }
+}
+
 /* seccion esquela pago */
 
 .esquela
@@ -235,7 +250,7 @@
 {
     width: 90%;
     height: 80%;
-    background-color: #373737;
+    background-color: #2a2626;
     border-radius: .8rem;
     display: flex;
     flex-direction: column;
@@ -288,4 +303,6 @@ iframe
 {
     width: 100%;
     height: 100%;
+    border: none;
+    border-radius: 10px;
 }

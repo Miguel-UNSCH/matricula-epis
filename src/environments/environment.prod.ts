@@ -1,11 +1,11 @@
 export const environment = {
   firebase: {
-    projectId: 'matricula-b90f7',
-    appId: '1:990604851019:web:04f7e276f1933d2977dace',
-    storageBucket: 'matricula-b90f7.appspot.com',
-    apiKey: 'AIzaSyAoHrQ_iojHx7zxN855yqAhuFG0DXhI6v0',
-    authDomain: 'matricula-b90f7.firebaseapp.com',
-    messagingSenderId: '990604851019',
+    projectId: 'matricula-epis',
+    appId: '1:791162867599:web:d2ac3e16013bc540ef05fa',
+    storageBucket: 'matricula-epis.appspot.com',
+    apiKey: 'AIzaSyCTl2HI0oIyVKhA0uj4w3H4fUdN5T47BRQ',
+    authDomain: 'matricula-epis.firebaseapp.com',
+    messagingSenderId: '791162867599',
   },
   production: true
 };

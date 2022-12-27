@@ -96,13 +96,40 @@ export class MainComponent implements OnInit, AfterViewInit {
   @ViewChild('lateral') Lateral! : ElementRef;
   @ViewChild('showButton') ShowButton! : ElementRef;
   @ViewChild('container') container! : ElementRef;
+  @ViewChild('vistaOpciones') VistaOpciones! : ElementRef;
+  @ViewChild('userCont') UserCont! : ElementRef;
   
   ToogleIN = false;
+  activeUserOptions = false;
 
   ngAfterViewInit(): void {
     if(this.permitido){
       //toogle for show and hide bar
       let TOOGLE = this.ToogleIN
+    //DOM const
+
+    // ----------------- Opciones de Usuario or vista telefono ------------
+    let activeOpt = this.activeUserOptions
+
+    const USER_CONT = this.UserCont.nativeElement // cont donde se ejecuta evento  
+    const VISTA_OPCIONES = this.VistaOpciones.nativeElement // vista de opciones
+
+    DOM.listen(USER_CONT, 'click', showHideOptions)
+    DOM.listen(VISTA_OPCIONES, 'click', showHideOptions)
+
+    function showHideOptions(){
+      if (activeOpt) {
+        VISTA_OPCIONES.style.display = 'none';
+        activeOpt = false;
+      }else{
+        VISTA_OPCIONES.style.display = 'block';
+        activeOpt = true;
+      }
+    }
+
+    // ------------------- barra lateral --------------------------
+
+    //toogle for show and hide bar
 
       //DOM const
       const DOM = this.render
