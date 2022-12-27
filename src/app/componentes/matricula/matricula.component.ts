@@ -4,6 +4,8 @@ import {
   Renderer2,
   ViewChild,
   ElementRef,
+  Output,
+  EventEmitter,
 } from '@angular/core';
 import datos from '../../../assets/data/datos.json';
 import { CURSOS } from 'src/app/Interfaces/curso/cursos';
@@ -11,8 +13,8 @@ import Swal from 'sweetalert2'; // alertas
 
 import * as pdfMake from 'pdfmake/build/pdfMake';
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
-
 (<any>pdfMake).vfs = pdfFonts.pdfMake.vfs;
+
 
 @Component({
   selector: 'app-matricula',
@@ -20,14 +22,19 @@ import * as pdfFonts from 'pdfmake/build/vfs_fonts';
   styleUrls: ['./matricula.component.css'],
 })
 export class MatriculaComponent implements OnInit {
+  //exportar dato para el componente padre
+  @Output() ClassEvent = new EventEmitter<string>();
+
   Cursos: CURSOS[] = datos;
   CursosAgregados: CURSOS[] = []; // aqui se guardan los cursos agregados
   constructor(private render: Renderer2) 
   {
-    localStorage.setItem('curso', JSON.stringify(this.CursosAgregados));
   }
 
   agregar(dato: any) {
+    if(localStorage.getItem('curso') == null){
+      localStorage.setItem('curso', JSON.stringify(this.CursosAgregados));
+    }
     const result = this.CursosAgregados.find((curso) => curso.id === dato.id);
     if (result) {
       Swal.fire({
@@ -85,37 +92,42 @@ export class MatriculaComponent implements OnInit {
   }
 
   generarMatricula() {
-    Swal.fire({
-      color: 'white',
-      title: '¿Estás seguro de esto?',
-      text: 'No podrás revertir esto',
-      background: '#404040',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonText: '¡Sí, continuar!',
-      cancelButtonText: 'Cancelar',
-      confirmButtonColor: '#FFC736',
-      cancelButtonColor: '#F27474',
-      focusCancel: false,
-      focusConfirm: false,
-    }).then((result) => {
-      if (result.isConfirmed && this.CursosAgregados.length > 0) {
-        this.abrirVistaEsquela();
-      }
-      else if (result.isConfirmed && this.CursosAgregados.length === 0) {
-        Swal.fire({
-          position: 'bottom-end',
-          color: 'white',
-          title: 'Error',
-          text: 'No agregaste ningún curso',
-          background: '#404040',
-          icon: 'error',
-          showConfirmButton: false,
-          toast: true,
-          timer: 2000,
-        })
-      }
-    });
+    if(this.CursosAgregados.length > 0){
+      Swal.fire({
+        color: 'white',
+        title: '¿Está seguro de generar su matricula?',
+        text: 'No podrás revertir esto',
+        background: '#404040',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: '¡Sí, continuar!',
+        cancelButtonText: 'No, cancelar',
+        confirmButtonColor: '#FFC736',
+        cancelButtonColor: '#F27474',
+        focusCancel: false,
+        focusConfirm: false,
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.abrirVistaEsquela();
+        }
+        else if (result.isConfirmed) {
+          
+        }
+      });
+    }else{
+      Swal.fire({
+        position: 'bottom-end',
+        color: 'white',
+        title: 'Error',
+        text: 'No agregaste ningún curso',
+        background: '#404040',
+        icon: 'error',
+        showConfirmButton: false,
+        toast: true,
+        timer: 2000,
+      })
+    }
+    
   }
 
   // Abrir y cerrar vista esquela
@@ -168,5 +180,8 @@ export class MatriculaComponent implements OnInit {
   ngOnInit(): void {
     let cursosRecuperados = localStorage.getItem('curso');
     this.CursosAgregados = JSON.parse(cursosRecuperados!);
+
+    //enviar evento de clase al iniciar
+    this.ClassEvent.emit('matricula')
   }
 }

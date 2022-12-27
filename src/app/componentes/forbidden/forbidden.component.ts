@@ -14,6 +14,5 @@ export class ForbiddenComponent {
 
   goToLogin(){
     this.userService.logOut()
-    this.route.navigate(['/login']);
   }
 }

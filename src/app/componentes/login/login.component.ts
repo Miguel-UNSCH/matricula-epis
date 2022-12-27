@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 
 import Swal from 'sweetalert2';
 
-import { Auth} from '@angular/fire/auth';
+import { Auth, User, getAuth, getRedirectResult, GoogleAuthProvider, updateCurrentUser} from '@angular/fire/auth';
 import { Router } from '@angular/router';
 
 import { UserService } from 'src/app/Services/user/user.service';
@@ -59,43 +59,33 @@ export class LoginComponent implements OnInit {
     function GoMainPage(){
       ROUTE.navigate(['/usuario']);
     }
-    
-    function VerifiedEmail(email: any) : boolean {
-      let verifiedText = ''
-      let dominioEscuela = '27@unsch.edu.pe'
-
-      if (email !== undefined){
-        let activate = false
-        for(let pos = 0; pos < email.length; pos++){
-          if (email[pos] == '@'){
-            verifiedText += email[pos-2] + email[pos-1]
-            activate = true
-          }
-          if (activate){
-            verifiedText += email[pos]
-          }
-        }
-      }
-      return verifiedText == dominioEscuela
-    } 
-    this.userService.loginWhitGoogle().then((data) => {
+    this.userService.loginWhitGoogle().then((data ) => {
+      const auth = getAuth()
+      localStorage.setItem('407h', JSON.stringify({
+        auth : auth,
+        currentUser : auth.currentUser
+      }))
+      let email = auth.currentUser?.email
+      let name = auth.currentUser?.displayName
+      // login user
       this.loading = true;
       OBS.subscribe({
         next(x) {
           GoMainPage();
         },
         complete(){
-          if (VerifiedEmail(data.user.email)){
+          if (UserServe.VerifiedEmail(email)){
             ALERT.fire({
-              text: 'Bienvenido estimado: ' + data.user.displayName,
+              text: 'Bienvenido estimado: ' + name,
               background: 'green',
               icon: 'success'
             });
 
             UserServe.VerificarUser(true)
+            // localStorage.setItem('UID',  JSON.stringify(data.user))
           }else{
             ALERT.fire({
-              text: 'INICIE SESIÓN CON CORREO INSTITUCIONAL',
+              text: 'INICIE SESIÓN CON CORREO INSTITUCIONAL ' + email + " no permitido",
               background: 'red',
               icon: 'error'
             })
@@ -108,7 +98,35 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if(this.data){
+      this.auth0 = this.data.auth
+
+      //
+      let isUser = this.auth0.currentUser
+      if(isUser){
+        // updateCurrentUser(this.auth0, isUser)
+        if (this.userService.VerifiedEmail(isUser.email)){
+          this.alert.fire({
+            text: 'Bienvenido estimado: ' + isUser.displayName,
+            background: 'green',
+            icon: 'success'
+          });
+          this.userService.VerificarUser(true)
+          this.route.navigate(['/usuario']);
+        }else{
+          this.alert.fire({
+            text: 'INICIE SESIÓN CON CORREO INSTITUCIONAL ' + isUser.email + " no permitido",
+            background: 'red',
+            icon: 'error'
+          })
+          this.userService.VerificarUser(false)
+          this.route.navigate(['/usuario']);
+        } 
+      }
+    }
+    
     
   }
-  
+  data = JSON.parse(localStorage.getItem('407h')!)
+  auth0! : Auth
 }
