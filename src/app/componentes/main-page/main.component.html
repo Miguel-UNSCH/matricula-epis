@@ -25,7 +25,7 @@
                         <div class="right">
                             <p>Horarios</p>
                             <i></i>
-                        </div>
+                    </div>
                         <!-- end tooltip-rigth -->
                     </div>
                     <div (click)="btnActive(1, 'docentes')" class="item tooltip" [class.active]="itemName == 'docentes'">
@@ -52,7 +52,7 @@
                         <div class="right">
                             <p>Mis cursos</p>
                             <i></i>
-                        </div>
+                    </div>
                         <!-- end tooltip-rigth -->
                     </div>
                     <div (click)="btnActive(4, 'deudas')" class="item tooltip" [class.active]="itemName == 'deudas'">
@@ -61,7 +61,7 @@
                         <div class="right">
                             <p>Mis deudas</p>
                             <i></i>
-                        </div>
+                    </div>
                         <!-- end tooltip-rigth -->
                     </div>
                     <div (click)="btnActive(5, 'pagos')" class="item tooltip" [class.active]="itemName == 'pagos'">
@@ -70,7 +70,7 @@
                         <div class="right">
                             <p>Mis pagos</p>
                             <i></i>
-                        </div>
+                    </div>
                         <!-- end tooltip-rigth -->
                     </div>
                     <div (click)="btnActive(6, 'ajustes')" class="item tooltip" [class.active]="itemName == 'ajustes'">
@@ -79,7 +79,7 @@
                         <div class="right">
                             <p>Ajustes</p>
                             <i></i>
-                        </div>
+                    </div>
                         <!-- end tooltip-rigth -->
                     </div>
                     <div (click)="btnActive(7, 'usuario')" class="item tooltip" [class.active]="itemName == 'usuario'">
@@ -129,7 +129,7 @@
                             <i class="fa-solid fa-list-check"></i>
                             <span>Horarios</span>
                         </div>
-                        <div (click)="btnActive(2)" class="item" [routerLink]="['/usuario/matricula']">
+                        <div (click)="btnActive(2, 'matricula')" class="item" [routerLink]="['/usuario/matricula']">
                             <i class="fa-solid fa-pen-to-square"></i>
                             <span>Matrícula</span>
                         </div>

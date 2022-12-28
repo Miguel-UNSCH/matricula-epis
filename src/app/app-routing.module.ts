@@ -25,14 +25,13 @@ const routes: Routes = [
     component: MainComponent,
     children: [
       {
-        path: '',
-        component: HorarioComponent
-      },
-      {
         path: 'matricula',
         component: MatriculaComponent
       },
-      
+      {
+        path: 'horario',
+        component: HorarioComponent
+      }
     ],
     // pathMatch: "full"
   },

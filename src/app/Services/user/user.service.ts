@@ -26,10 +26,11 @@ export class UserService {
     return this.afAuth.currentUser
   }
 
-  loginWhitGoogle(): Promise<any>{    
-    return signInWithPopup(this.afAuth, new GoogleAuthProvider() )
+  loginWhitGoogle(): Promise<any>{
+    
+      return signInWithPopup(this.afAuth, new GoogleAuthProvider() )
   }
-
+       
   // async refreskToken(user: User ,token : AuthCredential): Promise<any>{
   //   try {
   //     return await reauthenticateWithCredential(user, token)
@@ -57,8 +58,8 @@ export class UserService {
         }
         if (activate){
           verifiedText += email[pos]
-        }
-      }
+    }
+  }
     }
     return verifiedText == dominioEscuela
   }

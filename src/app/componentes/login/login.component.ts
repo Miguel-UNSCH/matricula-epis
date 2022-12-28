@@ -59,6 +59,7 @@ export class LoginComponent implements OnInit {
     function GoMainPage(){
       ROUTE.navigate(['/usuario']);
     }
+    
     this.userService.loginWhitGoogle().then((data ) => {
       const auth = getAuth()
       localStorage.setItem('407h', JSON.stringify({
@@ -100,7 +101,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     if(this.data){
       this.auth0 = this.data.auth
-
+    
       //
       let isUser = this.auth0.currentUser
       if(isUser){
@@ -123,8 +124,8 @@ export class LoginComponent implements OnInit {
           this.route.navigate(['/usuario']);
         } 
       }
-    }
-    
+  }
+  
     
   }
   data = JSON.parse(localStorage.getItem('407h')!)
