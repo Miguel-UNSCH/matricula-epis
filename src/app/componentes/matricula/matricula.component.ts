@@ -203,7 +203,7 @@ export class MatriculaComponent implements OnInit {
     const usuario = {
       nombres: USER?.displayName,
       apellidos: '',
-      código: '27200103',
+      código: '27200000',
       cursos: [],
       semestre: '2022-i',
       deuda: 35.5,
