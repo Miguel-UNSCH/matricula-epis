@@ -84,7 +84,7 @@ export class MainComponent implements OnInit, AfterViewInit {
     
     //ruta hija
     if(this.itemName == "horarios"){
-      this.route.navigate(['/usuario/'])
+      this.route.navigate(['/usuario/horario'])
     }else{
       this.route.navigate(['/usuario/' + this.itemName])
     }
