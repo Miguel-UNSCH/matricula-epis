@@ -1,5 +1,5 @@
 <app-forbidden *ngIf="!permitido"></app-forbidden>
-
+<app-loading [text]="'Cerrando sesión'" *ngIf="closeSesion"></app-loading>
 <div *ngIf="permitido" class="app">
     <main class="main">
         <div #container class="container">
@@ -97,7 +97,10 @@
                 <div class="navbar">
                     <div class="title">
                         <img class="logo" src="../../../assets/logosistemas.png" alt="logo-sistemas">
-                        SISTEMA DE MATRÍCULA EPIS UNSCH
+                        <span class="app-name">SISTEMA DE MATRÍCULA EPIS UNSCH                             
+                        <span class="timer">{{minutesToDday < 10 ? '0' + minutesToDday : minutesToDday}} min : {{secondsToDday < 10 ? '0' + secondsToDday : secondsToDday}} seg</span> 
+                        </span>
+                        
                     </div>
                     <div #userCont class="user">
                         <div class="separator-column"></div>
@@ -129,7 +132,7 @@
                             <i class="fa-solid fa-list-check"></i>
                             <span>Horarios</span>
                         </div>
-                        <div (click)="btnActive(2)" class="item" [routerLink]="['/usuario/matricula']">
+                        <div  class="item" [routerLink]="['/usuario/matricula']">
                             <i class="fa-solid fa-pen-to-square"></i>
                             <span>Matrícula</span>
                         </div>
@@ -146,7 +149,7 @@
                             <span>Mis pagos</span>
                         </div>
                         <div class="separator"> </div>
-                        <div class="item exit">
+                        <div class="item exit" (click)="CerrarSesion()">
                             <i class="fa-solid fa-power-off"></i>
                             <span>Cerrar sesión</span>
                         </div>

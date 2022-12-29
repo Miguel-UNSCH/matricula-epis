@@ -427,3 +427,18 @@
     transition: all ease-in-out 1000ms;
     transform: rotate(-180deg);
 }
+
+/*timer countdown*/
+.title .timer{
+    min-width: 52px;
+    width: 52px;
+    height: 26px;
+    padding: 0 1rem;
+    font-size: 14px;
+}
+
+.title .app-name{
+    font-family: "Zen Dots";
+    font-size: 16px;
+}
+/*timer countdown end*/

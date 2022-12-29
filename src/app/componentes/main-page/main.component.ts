@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ViewChild, ElementRef, Renderer2 } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, ElementRef, Renderer2, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { UserService } from 'src/app/Services/user/user.service';
@@ -7,13 +7,25 @@ import { interval, Subscription } from 'rxjs';
 import { UserI } from 'src/app/Interfaces/user/UserI';
 import { Auth, User } from 'firebase/auth';
 
+
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css']
 })
-export class MainComponent implements OnInit, AfterViewInit {
+export class MainComponent implements OnInit, AfterViewInit, OnDestroy {
   permitido! : boolean;
+
+  closeSesion : boolean = false;
+
+  CerrarSesion(){
+    this.closeSesion = true;
+    setTimeout(() => {
+      this.userSevice.logOut()
+    }, 1500);
+  }
   //user datas
   datos = JSON.parse(localStorage.getItem('407h')!)
   auth0! : Auth  
@@ -75,6 +87,39 @@ export class MainComponent implements OnInit, AfterViewInit {
     
   }
 
+  private timer! : Subscription;
+
+  alerta = Swal.mixin({
+    toast: true,
+    timer: 2500,
+    showConfirmButton: false,
+    position: 'center',
+  })
+
+  date = new Date();
+  duration = 1800000
+  milliSecondsInASecond = 1000;
+  hoursInADay = 24;
+  minutesInAnHour = 60;
+  SecondsInAMinute  = 60;
+
+  public timeDifference: any = this.duration;
+  public secondsToDday : any;
+  public minutesToDday : any;
+  public hoursToDday : any;
+  public daysToDday : any;
+
+  private getTimeDifference () {
+    this.timeDifference -=  1000
+    this.allocateTimeUnits(this.timeDifference);
+  }
+  private allocateTimeUnits (timeDifference: any) {
+    this.secondsToDday = Math.floor((timeDifference) / (this.milliSecondsInASecond) % this.SecondsInAMinute);
+    this.minutesToDday = Math.floor((timeDifference) / (this.milliSecondsInASecond * this.minutesInAnHour) % this.SecondsInAMinute);
+    this.hoursToDday = Math.floor((timeDifference) / (this.milliSecondsInASecond * this.minutesInAnHour * this.SecondsInAMinute) % this.hoursInADay);
+    this.daysToDday = Math.floor((timeDifference) / (this.milliSecondsInASecond * this.minutesInAnHour * this.SecondsInAMinute * this.hoursInADay));
+  }
+
 
 
   ngOnInit() {
@@ -86,9 +131,23 @@ export class MainComponent implements OnInit, AfterViewInit {
     }else{
       this.route.navigate(['/usuario/' + this.itemName])
     }
-    
-    //timer seccion countdown
-    
+
+    //timer seccion countdown for logOut
+    this.timer = interval(this.milliSecondsInASecond)
+    .subscribe( x => {
+      this.getTimeDifference();
+      if(this.minutesToDday == 0 && this.secondsToDday == 0){
+        this.userSevice.logOut();
+        this.alerta.fire({
+          icon: 'warning',
+          text: 'Tiempo de inicio de sesión agotado'
+        })
+      }
+    })
+  }
+
+  ngOnDestroy(): void {
+    this.timer.unsubscribe()
   }
 
   // DOM manipulation
@@ -106,33 +165,31 @@ export class MainComponent implements OnInit, AfterViewInit {
     if(this.permitido){
       //toogle for show and hide bar
       let TOOGLE = this.ToogleIN
-    //DOM const
+      //DOM const
+      const DOM = this.render
 
-    // ----------------- Opciones de Usuario or vista telefono ------------
-    let activeOpt = this.activeUserOptions
+      // ----------------- Opciones de Usuario or vista telefono ------------
+      let activeOpt = this.activeUserOptions
 
-    const USER_CONT = this.UserCont.nativeElement // cont donde se ejecuta evento  
-    const VISTA_OPCIONES = this.VistaOpciones.nativeElement // vista de opciones
+      const USER_CONT = this.UserCont.nativeElement // cont donde se ejecuta evento  
+      const VISTA_OPCIONES = this.VistaOpciones.nativeElement // vista de opciones
 
-    DOM.listen(USER_CONT, 'click', showHideOptions)
-    DOM.listen(VISTA_OPCIONES, 'click', showHideOptions)
+      DOM.listen(USER_CONT, 'click', showHideOptions)
+      DOM.listen(VISTA_OPCIONES, 'click', showHideOptions)
 
-    function showHideOptions(){
-      if (activeOpt) {
-        VISTA_OPCIONES.style.display = 'none';
-        activeOpt = false;
-      }else{
-        VISTA_OPCIONES.style.display = 'block';
-        activeOpt = true;
+      function showHideOptions(){
+        if (activeOpt) {
+          VISTA_OPCIONES.style.display = 'none';
+          activeOpt = false;
+        }else{
+          VISTA_OPCIONES.style.display = 'block';
+          activeOpt = true;
+        }
       }
-    }
 
     // ------------------- barra lateral --------------------------
 
     //toogle for show and hide bar
-
-      //DOM const
-      const DOM = this.render
 
       // Container element
       const CONTAINER = this.container.nativeElement
@@ -190,7 +247,6 @@ export class MainComponent implements OnInit, AfterViewInit {
         // console.log(e.path[0])
       }
     }
-    
-    
   }
+
 }

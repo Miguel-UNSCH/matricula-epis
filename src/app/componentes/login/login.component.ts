@@ -117,7 +117,8 @@ export class LoginComponent implements OnInit {
           this.alert.fire({
             text: 'INICIE SESIÓN CON CORREO INSTITUCIONAL ' + isUser.email + " no permitido",
             background: 'red',
-            icon: 'error'
+            icon: 'error',
+            timer: 3500
           })
           this.userService.VerificarUser(false)
           this.route.navigate(['/usuario']);
