@@ -19,13 +19,13 @@
                 </div>
                 <div class="separator"></div>
                 <div #items class="items">
-                    <div (click)="btnActive(0, 'horarios')" class="item tooltip" [routerLink]="['/usuario']" [class.active]="itemName == 'horarios'">
+                    <div (click)="btnActive(0, 'horarios')" class="item tooltip" [routerLink]="['/usuario/horario']" [class.active]="itemName == 'horarios'">
                         <i class="fa-solid fa-list-check"></i>
                         <!-- tooltip right -->
                         <div class="right">
                             <p>Horarios</p>
                             <i></i>
-                        </div>
+                    </div>
                         <!-- end tooltip-rigth -->
                     </div>
                     <div (click)="btnActive(1, 'docentes')" class="item tooltip" [class.active]="itemName == 'docentes'">
@@ -52,7 +52,7 @@
                         <div class="right">
                             <p>Mis cursos</p>
                             <i></i>
-                        </div>
+                    </div>
                         <!-- end tooltip-rigth -->
                     </div>
                     <div (click)="btnActive(4, 'deudas')" class="item tooltip" [class.active]="itemName == 'deudas'">
@@ -61,7 +61,7 @@
                         <div class="right">
                             <p>Mis deudas</p>
                             <i></i>
-                        </div>
+                    </div>
                         <!-- end tooltip-rigth -->
                     </div>
                     <div (click)="btnActive(5, 'pagos')" class="item tooltip" [class.active]="itemName == 'pagos'">
@@ -70,7 +70,7 @@
                         <div class="right">
                             <p>Mis pagos</p>
                             <i></i>
-                        </div>
+                    </div>
                         <!-- end tooltip-rigth -->
                     </div>
                     <div (click)="btnActive(6, 'ajustes')" class="item tooltip" [class.active]="itemName == 'ajustes'">
@@ -79,7 +79,7 @@
                         <div class="right">
                             <p>Ajustes</p>
                             <i></i>
-                        </div>
+                    </div>
                         <!-- end tooltip-rigth -->
                     </div>
                     <div (click)="btnActive(7, 'usuario')" class="item tooltip" [class.active]="itemName == 'usuario'">
@@ -132,7 +132,11 @@
                             <i class="fa-solid fa-list-check"></i>
                             <span>Horarios</span>
                         </div>
+<<<<<<< HEAD
                         <div  class="item" [routerLink]="['/usuario/matricula']">
+=======
+                        <div (click)="btnActive(2, 'matricula')" class="item" [routerLink]="['/usuario/matricula']">
+>>>>>>> master
                             <i class="fa-solid fa-pen-to-square"></i>
                             <span>Matrícula</span>
                         </div>

@@ -76,58 +76,24 @@ export class MainComponent implements OnInit, AfterViewInit, OnDestroy {
       //comprueba si hay un usuario y verifica el email para permitir el acceso
       if(this.$User){
         this.userSevice.VerificarUser(this.userSevice.VerifiedEmail(this.$User.email!))
-        this.permitido = this.userSevice.esVerificado()
-      }else{
-        this.userSevice.logOut()
-        this.route.navigate(['/login'])
-      }
+      this.permitido = this.userSevice.esVerificado()
     }else{
       this.userSevice.logOut()
+      this.route.navigate(['/login'])
+      
     }
-    
-  }
-
-  private timer! : Subscription;
-
-  alerta = Swal.mixin({
-    toast: true,
-    timer: 2500,
-    showConfirmButton: false,
-    position: 'center',
-  })
-
-  date = new Date();
-  duration = 1800000
-  milliSecondsInASecond = 1000;
-  hoursInADay = 24;
-  minutesInAnHour = 60;
-  SecondsInAMinute  = 60;
-
-  public timeDifference: any = this.duration;
-  public secondsToDday : any;
-  public minutesToDday : any;
-  public hoursToDday : any;
-  public daysToDday : any;
-
-  private getTimeDifference () {
-    this.timeDifference -=  1000
-    this.allocateTimeUnits(this.timeDifference);
-  }
-  private allocateTimeUnits (timeDifference: any) {
-    this.secondsToDday = Math.floor((timeDifference) / (this.milliSecondsInASecond) % this.SecondsInAMinute);
-    this.minutesToDday = Math.floor((timeDifference) / (this.milliSecondsInASecond * this.minutesInAnHour) % this.SecondsInAMinute);
-    this.hoursToDday = Math.floor((timeDifference) / (this.milliSecondsInASecond * this.minutesInAnHour * this.SecondsInAMinute) % this.hoursInADay);
-    this.daysToDday = Math.floor((timeDifference) / (this.milliSecondsInASecond * this.minutesInAnHour * this.SecondsInAMinute * this.hoursInADay));
+    }else{
+      this.userSevice.logOut()
   }
 
 
 
   ngOnInit() {
-    this.UserExits(); 
+    this.UserExits();    
     
     //ruta hija
     if(this.itemName == "horarios"){
-      this.route.navigate(['/usuario/'])
+      this.route.navigate(['/usuario/horario'])
     }else{
       this.route.navigate(['/usuario/' + this.itemName])
     }
@@ -165,88 +131,71 @@ export class MainComponent implements OnInit, AfterViewInit, OnDestroy {
     if(this.permitido){
       //toogle for show and hide bar
       let TOOGLE = this.ToogleIN
+
       //DOM const
       const DOM = this.render
+    //DOM const
+    const DOM = this.render
 
-      // ----------------- Opciones de Usuario or vista telefono ------------
-      let activeOpt = this.activeUserOptions
-
-      const USER_CONT = this.UserCont.nativeElement // cont donde se ejecuta evento  
-      const VISTA_OPCIONES = this.VistaOpciones.nativeElement // vista de opciones
-
-      DOM.listen(USER_CONT, 'click', showHideOptions)
-      DOM.listen(VISTA_OPCIONES, 'click', showHideOptions)
-
-      function showHideOptions(){
-        if (activeOpt) {
-          VISTA_OPCIONES.style.display = 'none';
-          activeOpt = false;
-        }else{
-          VISTA_OPCIONES.style.display = 'block';
-          activeOpt = true;
-        }
-      }
-
-    // ------------------- barra lateral --------------------------
-
-    //toogle for show and hide bar
 
       // Container element
       const CONTAINER = this.container.nativeElement
+    // Container element
+    const CONTAINER = this.container.nativeElement
 
-      //lateral const
-      const LATERAL = this.Lateral.nativeElement
+    //lateral const
+    const LATERAL = this.Lateral.nativeElement
 
-      const SHOW_BTN = this.ShowButton.nativeElement
+    const SHOW_BTN = this.ShowButton.nativeElement
 
       const ITEMS = this.Items.nativeElement
 
-      DOM.listen(SHOW_BTN, 'click', hideShowLateral)
+    DOM.listen(SHOW_BTN, 'click', hideShowLateral)
 
-      //funcion for events
-      function hideShowLateral (e: any){
-        let element = e.path[0]
-        e.preventDefault();
-        e.stopPropagation()
-        if(TOOGLE){
-          DOM.addClass(LATERAL, 'hide')        
-          DOM.removeClass(CONTAINER, 'lateral-active')
-          TOOGLE = false;
+    //funcion for events
+    function hideShowLateral (e: any){
+      let element = e.path[0]
+      e.preventDefault();
+      e.stopPropagation()
+      if(TOOGLE){
+        DOM.addClass(LATERAL, 'hide')        
+        DOM.removeClass(CONTAINER, 'lateral-active')
+        TOOGLE = false;
           // console.log(ITEMS.children[0])
           for (let j = 0; j < 8; j++){
             DOM.addClass(ITEMS.children[j], 'tooltip')
           }
 
-          if(e.path[0].children[0]){
-            element = e.path[0].children[0]
-          }else{
-            element = e.path[0]
-          }
-          // console.log(element)
-          DOM.removeClass(element, 'rotate-pointer')
-          // DOM.removeClass(element, 'fa-chevron-left')
-          // e.path[0].childNodes[0].className = 'fa-solid fa-chevron-right';
+        if(e.path[0].children[0]){
+          element = e.path[0].children[0]
         }else{
-          DOM.removeClass(LATERAL, 'hide')
-          DOM.addClass(CONTAINER, 'lateral-active')
-          if(e.path[0].children[0]){
-            element = e.path[0].children[0]
-          }else{
-            element = e.path[0]
-          }
-          // console.log(element)
-          // DOM.addClass(element, 'fa-chevron-left')
-          DOM.addClass(element, 'rotate-pointer')
-          TOOGLE = true;
+          element = e.path[0]
+        }
+        // console.log(element)
+        DOM.removeClass(element, 'rotate-pointer')
+        // DOM.removeClass(element, 'fa-chevron-left')
+        // e.path[0].childNodes[0].className = 'fa-solid fa-chevron-right';
+      }else{
+        DOM.removeClass(LATERAL, 'hide')
+        DOM.addClass(CONTAINER, 'lateral-active')
+        if(e.path[0].children[0]){
+          element = e.path[0].children[0]
+        }else{
+          element = e.path[0]
+        }
+        // console.log(element)
+        // DOM.addClass(element, 'fa-chevron-left')
+        DOM.addClass(element, 'rotate-pointer')
+        TOOGLE = true;
 
           for (let j = 0; j < 8; j++){
             DOM.removeClass(ITEMS.children[j], 'tooltip')
           }
-          // e.path[0].childNodes[0].className = 'fa-solid fa-chevron-left';
-        }
-        // console.log(e.path[0])
+        // e.path[0].childNodes[0].className = 'fa-solid fa-chevron-left';
       }
+      // console.log(e.path[0])
     }
+    
+    
   }
-
 }

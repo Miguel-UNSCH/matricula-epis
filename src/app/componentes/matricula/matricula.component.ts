@@ -105,42 +105,41 @@ export class MatriculaComponent implements OnInit {
   }
 
   generarMatricula() {
-    if(this.CursosAgregados.length > 0){
-      Swal.fire({
-        color: 'white',
+  if(this.CursosAgregados.length > 0){
+    Swal.fire({
+      color: 'white',
         title: '¿Está seguro de generar su matricula?',
-        text: 'No podrás revertir esto',
-        background: '#404040',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonText: '¡Sí, continuar!',
+      text: 'No podrás revertir esto',
+      background: '#404040',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: '¡Sí, continuar!',
         cancelButtonText: 'No, cancelar',
-        confirmButtonColor: '#FFC736',
-        cancelButtonColor: '#F27474',
-        focusCancel: false,
-        focusConfirm: false,
-      }).then((result) => {
+      confirmButtonColor: '#FFC736',
+      cancelButtonColor: '#F27474',
+      focusCancel: false,
+      focusConfirm: false,
+    }).then((result) => {
         if (result.isConfirmed) {
-          this.abrirVistaEsquela();
+        this.abrirVistaEsquela();
         }
         else if (result.isConfirmed) {
           
         }
       });
     }else{
-      Swal.fire({
-        position: 'bottom-end',
-        color: 'white',
-        title: 'Error',
-        text: 'No agregaste ningún curso',
-        background: '#404040',
-        icon: 'error',
-        showConfirmButton: false,
-        toast: true,
-        timer: 2000,
+        Swal.fire({
+          position: 'bottom-end',
+          color: 'white',
+          title: 'Error',
+          text: 'No agregaste ningún curso',
+          background: '#404040',
+          icon: 'error',
+          showConfirmButton: false,
+          toast: true,
+          timer: 2000,
       })
     }
-  }
     
   desMatricula(){
     Swal.fire({
