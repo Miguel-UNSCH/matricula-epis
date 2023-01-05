@@ -185,7 +185,7 @@
 /* tooltip end*/
 
 .hide {
-    transition: all ease-in-out 200ms;
+    transition: all ease-in-out 400ms;
     width: 4rem;
 }
 

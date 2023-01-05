@@ -48,11 +48,146 @@
     position: relative;
     display: flex;
     align-items: center;
+    gap: .5rem;
     justify-content: center;
     flex-direction: column;
     width: 100%;
     height: auto;
 }
+
+/* Filtro */
+.filtro-container
+{
+    background-color: #23242a;
+    border-radius: .3rem;
+    width: 100%;
+    min-height: 4rem;
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+@media (min-width: 737px) {
+    .filtro-container
+    {
+        /* grid-template-rows: 40% auto 20%; */
+    }
+}
+
+.dropdown
+{
+    min-width: 200px;
+    position: relative;
+    /* background-color: #D9D9D9; */
+}
+
+.select
+{
+    background: #2a2f3b;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid #2a2f3b;
+    border-radius:.5rem;
+    padding: .5rem 1rem;
+    cursor: pointer;
+    transition: background .3s;
+}
+
+.selected-clicked
+{
+    border: 2px solid #FFC736;
+    box-shadow: 0 0 0.3rem #FFC736;
+}
+
+.select:hover
+{
+    background: #323741;
+}
+
+.caret
+{
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 6px solid #fff;
+    transition: .3s;
+}
+
+.caret-rotate
+{
+    transform: rotate(180deg);
+}
+
+.menu
+{
+    list-style: none;
+    padding: .2rem 1rem;
+    background: #323741;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+    border-radius:.5rem;
+    color: #9fa5b5;
+    position: absolute;
+    top: 3.3rem;
+    left: 0;
+    width: 100%;
+    display: none;
+    transition: .2s;
+}
+
+.menu li
+{
+    padding: .8rem .5rem;
+    margin: .3rem 0;
+    border-radius: .5rem;
+    cursor: pointer;
+}
+
+.menu li:hover
+{
+    background: #2a2d35;
+}
+
+.active {
+    background: #23242a;
+}
+
+.menu-open
+{
+    display: block;
+}
+
+.btn-buscar-container
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.btn-buscar
+{
+    font-size: 1rem;
+    background: #2a2f3b;
+    color: #fff;
+    border: 2px solid #2a2f3b;
+    border-radius:.8rem;
+    padding: .5rem 1rem;
+    transition: background .3s;
+}
+
+.btn-buscar:hover
+{
+    cursor: pointer;
+    background: #323741;
+    border: 2px solid #FFC736;
+    box-shadow: 0 0 0.3rem #FFC736;
+}
+
+/* ++++++++++++++++++++++++++++++++ Horario +++++++++++++++++++++++++++++++++++ */
 
 .container
 {
@@ -61,11 +196,11 @@
     width: 100%;
     padding: .5rem;
     gap: .5rem;
-    overflow-x: auto;
 }
 
 .table 
 {
+    /* position: relative; */
     background-color: #404040;
     width: 100%;
     border-radius: .3rem;
@@ -74,6 +209,7 @@
 
 .table table
 {
+    position: relative;
     min-width: 50rem;
     width: 100%;
     text-align: center;
@@ -216,6 +352,11 @@
 {
     cursor: pointer;
     font-size: 1.1rem;
+}
+
+.animation
+{
+    border: 2px solid #e7cfcf;
 }
 
 .card-det.animation{

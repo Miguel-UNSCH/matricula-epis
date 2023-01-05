@@ -11,9 +11,40 @@
         </div>
     </div>
     <div class="main">
+        <div #buscarContainer class="filtro-container">
+            <div class="filtro-select">
+                <div class="dropdown">
+                    <div #buscarPor class="select">
+                        <span class="selected">Buscar por</span>
+                        <div #caretBus class="caret"></div>
+                    </div>
+                    <ul #menuBuscarPor class="menu">
+                        <li>Código curso</li>
+                        <li>Docente</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="filtro-select">
+                <div class="dropdown">
+                    <div #seleccionar class="select">
+                        <span class="selected">Selecciona</span>
+                        <div #caretSel class="caret"></div>
+                    </div>
+                    <ul #menuSeleccionar class="menu">
+                        <li>IS-181</li>
+                        <li>IS-241</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="btn-buscar-container">
+                <button class="btn-buscar">Buscar</button>
+                <button class="btn-buscar">Ver todo</button>
+            </div>
+        </div>
         <div class="container">
             <div class="table">
                 <table>
+                    <div class="card-container" #cardContainer></div>
                     <thead>
                         <tr>
                             <th>Hora</th>
@@ -225,6 +256,5 @@
                 </table>
             </div>
         </div>
-        <div class="card-container" #cardContainer></div>
     </div>
 </div>
