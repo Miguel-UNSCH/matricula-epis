@@ -14,7 +14,7 @@ export class HorarioComponent {
     'Viernes',
     'Sábado',
   ];
-  horas: number[] = [7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+  horas: number[] = [7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22];
 
   horarios: any = [
     [[], [], [], [], [], []],
@@ -95,6 +95,12 @@ export class HorarioComponent {
     ],
     [[], [], [], [], [], []],
     [[], [], [], [], [], []],
+    [[], [], [], [], [], []],
+    [[], [], [], [
+      { codigo: 'IS-241', docente: 'Elinar Carrillo', color: '#2370dd' },
+      { codigo: 'IS-181', docente: 'Manuel Lagos', color: '#ff7000' },
+      { codigo: 'IS-341', docente: 'Cristian Lezama', color: '#a570aa' },
+    ], [], []],
   ];
 
   constructor(private render: Renderer2) {}
@@ -116,7 +122,7 @@ export class HorarioComponent {
       [[], [], [], [], [], []],
     ];
 
-    for (let i = 0; i < 13; i++) {
+    for (let i = 0; i < 15; i++) {
       for (let j = 0; j < 6; j++) {
         if (horarios[i][j].length > 0) {
           let temp = horarios[i][j].filter(
@@ -149,7 +155,7 @@ export class HorarioComponent {
       [[], [], [], [], [], []],
     ];
 
-    for (let i = 0; i < 13; i++) {
+    for (let i = 0; i < 15; i++) {
       for (let j = 0; j < 6; j++) {
         if (horarios[i][j].length > 0) {
           let temp = horarios[i][j].filter(
@@ -175,7 +181,7 @@ export class HorarioComponent {
     const tableHrs = this.table.nativeElement;
     const CARDCONTAINER = this.cardContainer.nativeElement;
 
-    for (let i = 0; i < 13; i++) {
+    for (let i = 0; i < 15; i++) {
       for (let j = 1; j < 7; j++) {
         const h = horario[i][j - 1];
         if (h.length > 0) {

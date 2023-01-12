@@ -7,7 +7,6 @@
     flex-direction: column;
     padding: 1rem;
     gap: 1rem;
-    overflow-y: auto;
 }
 
 .matricula-container .matricula-header
@@ -36,7 +35,7 @@
     color: #dadada;
 }
 
-.house
+.home
 {
     color: #FFC736;
 }

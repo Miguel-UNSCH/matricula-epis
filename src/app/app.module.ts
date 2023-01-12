@@ -17,6 +17,13 @@ import { LoadingComponent } from './componentes/loading/loading.component';
 import { ForbiddenComponent } from './componentes/forbidden/forbidden.component';
 import { MatriculaComponent } from './componentes/matricula/matricula.component';
 import { HorarioComponent } from './componentes/horario/horario.component';
+import { DeudasComponent } from './componentes/deudas/deudas.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import {MatTableModule} from '@angular/material/table';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import { PrimeNgModule } from './prime-ng/prime-ng.module';
 
 @NgModule({
   declarations: [
@@ -27,7 +34,8 @@ import { HorarioComponent } from './componentes/horario/horario.component';
     LoadingComponent,
     ForbiddenComponent,
     MatriculaComponent,
-    HorarioComponent
+    HorarioComponent,
+    DeudasComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,6 +45,11 @@ import { HorarioComponent } from './componentes/horario/horario.component';
     provideFirestore(() => getFirestore()),
     provideStorage(() => getStorage()),
     SweetAlert2Module.forRoot(),
+    BrowserAnimationsModule,
+    MatTableModule,
+    MatFormFieldModule,
+    MatPaginatorModule,
+    PrimeNgModule
   ],
   providers: [],
   bootstrap: [AppComponent]

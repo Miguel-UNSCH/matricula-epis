@@ -55,7 +55,7 @@
                     </div>
                         <!-- end tooltip-rigth -->
                     </div>
-                    <div (click)="btnActive(4, 'deudas')" class="item tooltip" [class.active]="itemName == 'deudas'">
+                    <div (click)="btnActive(4, 'deudas')" class="item tooltip" [routerLink]="['/usuario/deudas']" [class.active]="itemName == 'deudas'">
                         <i class="fa-solid fa-money-check-dollar"></i>
                         <!-- tooltip right -->
                         <div class="right">
@@ -137,7 +137,7 @@
                             <i class="fa-solid fa-sitemap"></i>
                             <span>Mis cursos</span>
                         </div>
-                        <div class="item">
+                        <div class="item" [routerLink]="['/usuario/deudas']">
                             <i class="fa-solid fa-money-check-dollar"></i>
                             <span>Mis deudas</span>
                         </div>

@@ -7,7 +7,6 @@
     flex-direction: column;
     padding: 1rem;
     gap: 1rem;
-    overflow-y: auto;
 }
 
 .horario-container .horario-header
@@ -58,20 +57,21 @@
 /* Filtro */
 .filtro-container
 {
-    background-color: #23242a;
+    background-color: #D9D9D9;
     border-radius: .3rem;
     width: 100%;
     min-height: 4rem;
-    padding: 1rem;
+    padding: .5rem;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: auto auto 110px;
     gap: 1rem;
 }
 
-@media (min-width: 737px) {
+@media (max-width: 810px) {
     .filtro-container
     {
-        /* grid-template-rows: 40% auto 20%; */
+        display: flex;
+        flex-direction: column;
     }
 }
 
@@ -84,27 +84,27 @@
 
 .select
 {
-    background: #2a2f3b;
+    background: #404040;
     color: #fff;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border: 2px solid #2a2f3b;
+    border: 2px solid #404040;
     border-radius:.5rem;
     padding: .5rem 1rem;
     cursor: pointer;
-    transition: background .3s;
+    transition: background .3s ease;
 }
 
 .selected-clicked
 {
-    border: 2px solid #FFC736;
-    box-shadow: 0 0 0.3rem #FFC736;
+    border: 2px solid #e0a81b;
+    box-shadow: 0 0 0.3rem #e0a81b;
 }
 
 .select:hover
 {
-    background: #323741;
+    background: #2b2a2a;
 }
 
 .caret
@@ -129,8 +129,9 @@
     background: #323741;
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
     border-radius:.5rem;
-    color: #9fa5b5;
+    color: #e0e3eb;
     position: absolute;
+    z-index: 2;
     top: 3.3rem;
     left: 0;
     width: 100%;
@@ -165,15 +166,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 1rem;
 }
 
 .btn-buscar
 {
     font-size: 1rem;
-    background: #2a2f3b;
+    background: #404040;
     color: #fff;
-    border: 2px solid #2a2f3b;
+    border: 2px solid #404040;
     border-radius:.8rem;
     padding: .5rem 1rem;
     transition: background .3s;
@@ -182,9 +182,9 @@
 .btn-buscar:hover
 {
     cursor: pointer;
-    background: #323741;
-    border: 2px solid #FFC736;
-    box-shadow: 0 0 0.3rem #FFC736;
+    background: #2b2a2a;
+    border: 2px solid #e0a81b;
+    box-shadow: 0 0 0.3rem #e0a81b;
 }
 
 /* ++++++++++++++++++++++++++++++++ Horario +++++++++++++++++++++++++++++++++++ */
@@ -227,6 +227,10 @@
 .table table tr, td
 {
     height: 3rem;
+}
+
+.table table tbody tr td:nth-child(1){
+    width: 50px;
 }
 
 .cursos
