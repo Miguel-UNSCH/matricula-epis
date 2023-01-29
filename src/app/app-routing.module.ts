@@ -42,7 +42,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: "404-not-found"
+    redirectTo: 'usuario'
   },
 ];
 

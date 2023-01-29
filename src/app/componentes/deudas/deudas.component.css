@@ -160,6 +160,8 @@
     border-radius: .5rem;
     padding: 1rem;
     margin: 0 .5rem;
+    max-height: 75%;
+    overflow: auto;
 }
 
 .modal-container .modal .top
