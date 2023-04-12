@@ -1,0 +1,132 @@
+<div class="deudas-container">
+    <div class="deudas-header">
+        <div class="deudas-title">
+            <span>Deudas</span>
+        </div>
+        <div class="deudas-separador"></div>
+        <div class="deudas-desc">
+            <i class="fa-solid fa-money-check-dollar icon"></i>
+            <i class="fa-solid fa-chevron-right"></i>
+            <span>Mis deudas</span>
+        </div>
+    </div>
+    <div class="main">
+        <div class="content">
+            <div class="title">
+                <h2>Detalle de deudas</h2>
+            </div>
+            <p-table [value]="deudas" [paginator]="true" [rows]="5" 
+            [rowsPerPageOptions]="[5,10,15]" styleClass="p-datatable-gridlines" [tableStyle]="{'min-width': '1000px'}">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width:20px">N°</th>
+                        <th >Motivo</th>
+                        <th style="width:250px">Fecha de ocurrencia</th>
+                        <th style="width:150px">Estado</th>
+                        <th style="width:160px">Acciones</th>
+                        <th style="width:130px">Monto</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-deuda>
+                    <tr>
+                        <td>{{ deuda.numero }}</td>
+                        <td>{{ deuda.motivo }}</td>
+                        <td>{{ deuda.fechaDeOcurrencia }}</td>
+                        <td>
+                            <div *ngIf="deuda.estado" class="btn-justificado">
+                                <button pButton label="Justificado" class="p-button-raised p-button-rounded p-button-info"></button>
+                            </div>
+                            <div *ngIf="!deuda.estado" class="btn-pendiente">
+                                <button pButton label="Pendiente" class="p-button-raised p-button-rounded p-button-danger"></button>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="btn-ver-detalles">
+                                <button (click)="abrirDetalle(deuda)" pButton label="Ver detalles" icon="pi pi-eye" iconPos="left" class="p-button-raised p-button-rounded p-button-outlined"></button>
+                            </div>
+                        </td>
+                        <td>S/. {{ deuda.monto }}.00</td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+    </div>
+</div>
+
+<div #modalContainer class="modal-container">
+    <div class="modal">
+        <div class="top">
+            <div class="title">
+                <div class="text">
+                    Detalles de la deuda por inasistencia a:
+                </div>
+                <div class="detalle">
+                    {{ detalleDeuda.motivo | titlecase }}
+                </div>
+            </div>
+            <div class="close">
+                <i (click)="cerrarDetalle()" class="fa-solid fa-xmark close-icon"></i>
+            </div>
+        </div>
+        <div class="content">
+            <div class="item">
+                <div class="title">
+                    <h4>Fecha de convocatoria:</h4>
+                </div>
+                <div class="desc">
+                    <p>Convocado del dia 02 de enero del 2023.</p>
+                    <p>Con 4 dias de anticipación.</p>
+                </div>
+            </div>
+            <div class="item">
+                <div class="title">
+                    <h4>Estado de deuda:</h4>
+                </div>
+                <div class="desc">
+                    <div *ngIf="detalleDeuda.estado" class="btn-justificado j-left">
+                        <button pButton label="Justificado" class="p-button-raised p-button-rounded p-button-info"></button>
+                    </div>
+                    <div *ngIf="!detalleDeuda.estado" class="btn- j-left">
+                        <button pButton label="Pendiente" class="p-button-raised p-button-rounded p-button-danger"></button>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="title">
+                    <h4>Fecha y hora de actividad realizada:</h4>
+                </div>
+                <div class="desc">
+                    <p><strong>FECHA: </strong>6 de enero del 2023</p>
+                    <p><strong>HORA : </strong>3:00 pm</p>
+                    <p><strong>LUGAR: </strong>Aula H-202</p>
+                </div>
+            </div>
+            <div class="item">
+                <div class="title">
+                    <h4>Motivo de justificación:</h4>
+                </div>
+                <div class="desc">
+                    <p>El estudiante declara que por motivos de estar muy delicado de salud, no pudo asistir a dicha actividad.</p>
+                    <p>Justifica con certificado médico.</p>
+                </div>
+            </div>
+            <div class="item">
+                <div class="title">
+                    <h4>Fecha de creación:</h4>
+                </div>
+                <div class="desc">
+                    <p>Subido el 4 de enero del 2023</p>
+                </div>
+            </div>
+            <div class="item">
+                <div class="title">
+                    <h4>Monto adeudado:</h4>
+                </div>
+                <div class="desc">
+                    <p>El monto asciende a:</p>
+                    <p>S/. {{ detalleDeuda.monto }}.00</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -7,7 +7,6 @@
     flex-direction: column;
     padding: 1rem;
     gap: 1rem;
-    overflow-y: auto;
 }
 
 .horario-container .horario-header
@@ -48,11 +47,147 @@
     position: relative;
     display: flex;
     align-items: center;
+    gap: .5rem;
     justify-content: center;
     flex-direction: column;
     width: 100%;
     height: auto;
 }
+
+/* Filtro */
+.filtro-container
+{
+    background-color: #D9D9D9;
+    border-radius: .3rem;
+    width: 100%;
+    min-height: 4rem;
+    padding: .5rem;
+    display: grid;
+    grid-template-columns: auto auto 110px;
+    gap: 1rem;
+}
+
+@media (max-width: 810px) {
+    .filtro-container
+    {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.dropdown
+{
+    min-width: 200px;
+    position: relative;
+    /* background-color: #D9D9D9; */
+}
+
+.select
+{
+    background: #404040;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid #404040;
+    border-radius:.5rem;
+    padding: .5rem 1rem;
+    cursor: pointer;
+    transition: background .3s ease;
+}
+
+.selected-clicked
+{
+    border: 2px solid #e0a81b;
+    box-shadow: 0 0 0.3rem #e0a81b;
+}
+
+.select:hover
+{
+    background: #2b2a2a;
+}
+
+.caret
+{
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 6px solid #fff;
+    transition: .3s;
+}
+
+.caret-rotate
+{
+    transform: rotate(180deg);
+}
+
+.menu
+{
+    list-style: none;
+    padding: .2rem 1rem;
+    background: #323741;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+    border-radius:.5rem;
+    color: #e0e3eb;
+    position: absolute;
+    z-index: 2;
+    top: 3.3rem;
+    left: 0;
+    width: 100%;
+    display: none;
+    transition: .2s;
+}
+
+.menu li
+{
+    padding: .8rem .5rem;
+    margin: .3rem 0;
+    border-radius: .5rem;
+    cursor: pointer;
+}
+
+.menu li:hover
+{
+    background: #2a2d35;
+}
+
+.active {
+    background: #23242a;
+}
+
+.menu-open
+{
+    display: block;
+}
+
+.btn-buscar-container
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-buscar
+{
+    font-size: 1rem;
+    background: #404040;
+    color: #fff;
+    border: 2px solid #404040;
+    border-radius:.8rem;
+    padding: .5rem 1rem;
+    transition: background .3s;
+}
+
+.btn-buscar:hover
+{
+    cursor: pointer;
+    background: #2b2a2a;
+    border: 2px solid #e0a81b;
+    box-shadow: 0 0 0.3rem #e0a81b;
+}
+
+/* ++++++++++++++++++++++++++++++++ Horario +++++++++++++++++++++++++++++++++++ */
 
 .container
 {
@@ -61,11 +196,11 @@
     width: 100%;
     padding: .5rem;
     gap: .5rem;
-    overflow-x: auto;
 }
 
 .table 
 {
+    /* position: relative; */
     background-color: #404040;
     width: 100%;
     border-radius: .3rem;
@@ -74,6 +209,7 @@
 
 .table table
 {
+    position: relative;
     min-width: 50rem;
     width: 100%;
     text-align: center;
@@ -91,6 +227,10 @@
 .table table tr, td
 {
     height: 3rem;
+}
+
+.table table tbody tr td:nth-child(1){
+    width: 50px;
 }
 
 .cursos
@@ -216,6 +356,11 @@
 {
     cursor: pointer;
     font-size: 1.1rem;
+}
+
+.animation
+{
+    border: 2px solid #e7cfcf;
 }
 
 .card-det.animation{

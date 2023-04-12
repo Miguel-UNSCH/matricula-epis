@@ -59,7 +59,7 @@
                     </div>
                         <!-- end tooltip-rigth -->
                     </div>
-                    <div (click)="btnActive(4, 'deudas')" class="item tooltip" [class.active]="itemName == 'deudas'" >
+                    <div (click)="btnActive(4, 'deudas')" class="item tooltip" [routerLink]="['/usuario/deudas']" [class.active]="itemName == 'deudas'">
                         <i class="fa-solid fa-money-check-dollar"></i>
                         <!-- tooltip right -->
                         <div class="right">

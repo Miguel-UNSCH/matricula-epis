@@ -226,7 +226,7 @@
 /* tooltip end*/
 
 .hide {
-    transition: all ease-in-out 200ms;
+    transition: all ease-in-out 400ms;
     width: 4rem;
 }
 
@@ -454,6 +454,19 @@
     width: auto;
     overflow-y: auto;
     background-color: #7C7C7C;
+}
+
+.main-container::-webkit-scrollbar {
+    width: 8px;
+}
+                    
+.main-container::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+                    
+.main-container::-webkit-scrollbar-thumb {
+    background-color: rgb(247, 242, 242);
+    border-radius: 5px;
 }
 
 .lateral-active {

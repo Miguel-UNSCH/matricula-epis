@@ -17,9 +17,16 @@ import { LoadingComponent } from './componentes/loading/loading.component';
 import { ForbiddenComponent } from './componentes/forbidden/forbidden.component';
 import { MatriculaComponent } from './componentes/matricula/matricula.component';
 import { HorarioComponent } from './componentes/horario/horario.component';
+import { DeudasComponent } from './componentes/deudas/deudas.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { provideDatabase,getDatabase } from '@angular/fire/database';
 import { PagosComponent } from './componentes/pagos/pagos.component';
 import { HttpClientModule } from '@angular/common/http';
+
+import {MatTableModule} from '@angular/material/table';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import { PrimeNgModule } from './prime-ng/prime-ng.module';
 
 @NgModule({
   declarations: [
@@ -31,6 +38,7 @@ import { HttpClientModule } from '@angular/common/http';
     ForbiddenComponent,
     MatriculaComponent,
     HorarioComponent,
+    DeudasComponent,
     PagosComponent,
   ],
   imports: [
@@ -43,6 +51,11 @@ import { HttpClientModule } from '@angular/common/http';
     SweetAlert2Module.forRoot(),
     provideDatabase(() => getDatabase()),
     HttpClientModule,
+    BrowserAnimationsModule,
+    MatTableModule,
+    MatFormFieldModule,
+    MatPaginatorModule,
+    PrimeNgModule
   ],
   providers: [],
   bootstrap: [AppComponent]

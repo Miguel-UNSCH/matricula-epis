@@ -1,0 +1,256 @@
+.deudas-container
+{
+    height: 100%;
+    width: 100%;
+    background-color: #7C7C7C;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1rem;
+}
+
+.deudas-container .deudas-header
+{
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    gap: .8rem;
+    font-size: 1.3rem;
+}
+
+.deudas-container .deudas-separador
+{
+    background-color: #404040;
+    height: 90%;
+    width: 3px;
+    border-radius: 1.5px;
+}
+
+.deudas-container .deudas-desc
+{
+    display: flex;
+    gap: .4rem;
+    align-items: center;
+    font-size: 1rem;
+    color: #dadada;
+}
+
+.icon
+{
+    color: #FFC736;
+}
+
+.main
+{
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    padding: .5rem;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    background-color: #404040;
+    border-radius: .5em;
+    color: antiquewhite;
+}
+
+.main .title h2
+{
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.4rem;
+}
+
+.main .content
+{
+    width: 100%;
+}
+
+.btn-ver-detalles
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.p-button
+{
+    height: 30px;
+    font-size: 10px;
+    font-weight: 600;
+}
+
+.p-button.p-button-outlined
+{
+    background-color: transparent;
+    color: #FFC736;
+    border: 1px solid;
+}
+
+.p-button.p-button-outlined:hover
+{
+    background-color: #FFC736;
+    color: rgb(255, 255, 255);
+    border: none;
+}
+
+.p-button.p-button-info
+{
+    color: #dadada;
+    background-color: rgb(29, 55, 199);
+    border: none;
+}
+
+.p-button.p-button-info:hover
+{
+    color: #fffcfc;
+    background-color: rgb(51, 78, 230);
+    border: none;
+}
+
+.p-button.p-button-danger
+{
+    color: #dadada;
+    background-color: rgb(187, 25, 46);
+    border: none;
+}
+
+.p-button.p-button-danger:hover
+{
+    color: #fcfcfc;
+    background-color: rgb(218, 38, 62);
+    border: none;
+}
+
+.btn-justificado,
+.btn-pendiente
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.j-left
+{
+    justify-content: start;
+}
+
+.modal-container{
+    background-color: rgba(39, 37, 37, 0.281);
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    display: none;
+}
+
+.modal-container .modal
+{
+    position: relative;
+    background-color: #393939;
+    border-radius: .5rem;
+    padding: 1rem;
+    margin: 0 .5rem;
+    max-height: 75%;
+    overflow: auto;
+}
+
+.modal-container .modal .top
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-container .modal .top .close i
+{
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    transition: all 200ms ease;
+}
+
+.modal-container .modal .top .close i:hover
+{
+    cursor: pointer;
+    font-size: 1.1rem;
+}
+
+.modal-container .modal .top .title
+{
+    padding: 0 1rem 1rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: .3rem;
+}
+
+.modal-container .modal .top .title .text
+{
+    font-size: 1.2rem;
+    font-weight: 500;    
+}
+
+.modal-container .modal .top .title .detalle
+{
+    background-color: #FFC736;
+    padding: .5rem 2rem;
+    border-radius: .5rem;
+    font-family: 'Zen dots', sans-serif;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.modal-container .modal .content
+{
+    background-color: #4B4B4B;
+    width: 100%;
+    max-width: 800px;
+    border-radius: .5rem;
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+}
+
+.modal-container .modal .content .item
+{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.modal-container .modal .content .item .title
+{
+    font-size: .9rem;
+}
+
+.modal-container .modal .content .item .desc
+{
+    color: #afafaf;
+    font-size: .8rem;
+}
+
+@media screen and (max-width: 540px) {
+    .modal-container .modal .content
+    {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .modal-container .modal .content
+    {
+        grid-template-columns: 1fr;
+    }
+}

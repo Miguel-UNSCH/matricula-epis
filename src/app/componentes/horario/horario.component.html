@@ -11,9 +11,39 @@
         </div>
     </div>
     <div class="main">
+        <div #buscarContainer class="filtro-container">
+            <div class="filtro-select">
+                <div class="dropdown">
+                    <div #buscarPor class="select">
+                        <span class="selected">Buscar por</span>
+                        <div #caretBus class="caret"></div>
+                    </div>
+                    <ul #menuBuscarPor class="menu">
+                        <li>Código curso</li>
+                        <li>Docente</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="filtro-select">
+                <div class="dropdown">
+                    <div #seleccionar class="select">
+                        <span class="selected">Selecciona</span>
+                        <div #caretSel class="caret"></div>
+                    </div>
+                    <ul #menuSeleccionar class="menu">
+                        <li>IS-181</li>
+                        <li>IS-241</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="btn-buscar-container">
+                <button class="btn-buscar">Ver todo</button>
+            </div>
+        </div>
         <div class="container">
             <div class="table">
                 <table>
+                    <div class="card-container" #cardContainer></div>
                     <thead>
                         <tr>
                             <th>Hora</th>
@@ -27,7 +57,7 @@
                     </thead>
                     <tbody #table>
                         <tr>
-                            <td>7 am - 8 am</td>
+                            <td>7 am</td>
                             <td>
                             </td>
                             <td>
@@ -42,7 +72,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>8 am - 9 am</td>
+                            <td>8 am</td>
                             <td>
                             </td>
                             <td>
@@ -57,7 +87,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>9 am - 10 am</td>
+                            <td>9 am</td>
                             <td>
                             </td>
                             <td>
@@ -72,7 +102,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>10 am - 11 am</td>
+                            <td>10 am</td>
                             <td>
                             </td>
                             <td>
@@ -87,7 +117,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>11 am - 12 pm</td>
+                            <td>11 am</td>
                             <td>
                             </td>
                             <td>
@@ -102,7 +132,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>12 pm - 1 pm</td>
+                            <td>12 pm</td>
                             <td>
                             </td>
                             <td>
@@ -117,7 +147,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>1 pm - 2 pm</td>
+                            <td>1 pm</td>
                             <td>
                             </td>
                             <td>
@@ -132,7 +162,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>2 pm - 3 pm</td>
+                            <td>2 pm</td>
                             <td>
                             </td>
                             <td>
@@ -147,7 +177,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>3 pm - 4 pm</td>
+                            <td>3 pm</td>
                             <td>
                             </td>
                             <td>
@@ -162,7 +192,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>4 pm - 5 pm</td>
+                            <td>4 pm</td>
                             <td>
                             </td>
                             <td>
@@ -177,7 +207,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>5 pm - 6 pm</td>
+                            <td>5 pm</td>
                             <td>
                             </td>
                             <td>
@@ -192,7 +222,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>6 pm - 7 pm</td>
+                            <td>6 pm</td>
                             <td>
                             </td>
                             <td>
@@ -207,7 +237,37 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>7 pm - 8 pm</td>
+                            <td>7 pm</td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>8 pm</td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>9 pm</td>
                             <td>
                             </td>
                             <td>
@@ -225,6 +285,5 @@
                 </table>
             </div>
         </div>
-        <div class="card-container" #cardContainer></div>
     </div>
 </div>
