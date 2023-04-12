@@ -24,7 +24,7 @@ import { LOGO_SISTEMAS, LOGO_UNSCH } from 'src/app/Interfaces/imgbase64/imgbase6
 @Component({
   selector: 'app-matricula',
   templateUrl: './matricula.component.html',
-  styleUrls: ['./matricula.component.css'],
+  styleUrls: ['./matricula.component.css',],
 })
 export class MatriculaComponent implements OnInit {
 
@@ -42,6 +42,10 @@ export class MatriculaComponent implements OnInit {
       // console.log('noExiste')
       localStorage.setItem('curso', JSON.stringify(this.CursosAgregados));
     }
+  }
+
+  cambiarDeudas(){
+    localStorage.setItem('Item', "deudas");
   }
 
   agregar(dato: any) {
@@ -103,43 +107,49 @@ export class MatriculaComponent implements OnInit {
       }
     });
   }
-
+  EsMatriculado : boolean = false;
   generarMatricula() {
-  if(this.CursosAgregados.length > 0){
-    Swal.fire({
-      color: 'white',
-        title: '¿Está seguro de generar su matricula?',
-      text: 'No podrás revertir esto',
-      background: '#404040',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonText: '¡Sí, continuar!',
-        cancelButtonText: 'No, cancelar',
-      confirmButtonColor: '#FFC736',
-      cancelButtonColor: '#F27474',
-      focusCancel: false,
-      focusConfirm: false,
-    }).then((result) => {
-        if (result.isConfirmed) {
-        this.abrirVistaEsquela();
-        }
-        else if (result.isConfirmed) {
-          
-        }
-      });
-    }else{
+    if(this.CursosAgregados.length > 0){
+      if(this.EsMatriculado){
+
+      }else{
         Swal.fire({
-          position: 'bottom-end',
           color: 'white',
-          title: 'Error',
-          text: 'No agregaste ningún curso',
+            title: '¿Está seguro de generar su matricula?',
+          text: 'No podrás revertir esto',
           background: '#404040',
-          icon: 'error',
-          showConfirmButton: false,
-          toast: true,
-          timer: 2000,
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonText: '¡Sí, continuar!',
+            cancelButtonText: 'No, cancelar',
+          confirmButtonColor: '#FFC736',
+          cancelButtonColor: '#F27474',
+          focusCancel: false,
+          focusConfirm: false,
+        }).then((result) => {
+            if (result.isConfirmed) {
+            this.abrirVistaEsquela();
+            }
+            else if (result.isConfirmed) {
+              
+            }
+          });
+        }
+      
+    }else{
+      Swal.fire({
+        position: 'bottom-end',
+        color: 'white',
+        title: 'Error',
+        text: 'No agregaste ningún curso',
+        background: '#404040',
+        icon: 'error',
+        showConfirmButton: false,
+        toast: true,
+        timer: 2000,
       })
     }
+  }
     
   desMatricula(){
     Swal.fire({
@@ -203,7 +213,7 @@ export class MatriculaComponent implements OnInit {
     const USER =  JSON.parse(localStorage.getItem('407h')!).currentUser    //this.userSevice.afAuth.currentUser;
 
     const usuario = {
-      nombres: USER?.displayName,
+      nombres: USER?.displayName || "USERNAME",
       apellidos: '',
       código: '27200103',
       cursos: [],
@@ -315,7 +325,7 @@ export class MatriculaComponent implements OnInit {
 
     const docDefinition = {
       info: {
-        title: USER?.displayName,
+        title: USER?.displayName || "USERNAME",
         author: 'Franklin Figueroa Perez',
         subject: 'pago',
         keywords: 'esquela, proforma',
@@ -415,7 +425,7 @@ export class MatriculaComponent implements OnInit {
                   margin: [0, 2, 0, 10],
                 },
                 {
-                  text: usuario.código,
+                  text: usuario.código ,
                   alignment: 'right',
                   fontSize: 9,
                   margin: [0, 2, 0, 10],

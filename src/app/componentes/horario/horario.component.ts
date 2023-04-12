@@ -148,6 +148,17 @@ export class HorarioComponent{
                       }else{
                         RENDER.setStyle(divCurso, 'padding', '10px 0')
                         RENDER.appendChild(divCardDet, divCurso)
+
+                        RENDER.listen(divCurso, 'click', () => {
+                          RENDER.addClass(CARDCONTAINER, 'card-container-visible')
+                          RENDER.addClass(divCardDet, 'card-visible')
+                          RENDER.listen(CARDCONTAINER, 'click', () => {
+                            RENDER.addClass(divCardDet ,'animation')
+                            setTimeout(() => {
+                              RENDER.removeClass(divCardDet ,'animation')
+                            }, 500)
+                          })
+                        })
                       }
                       cont ++
                   });

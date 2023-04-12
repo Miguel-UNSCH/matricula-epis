@@ -1,4 +1,8 @@
-.matricula-container
+*{
+    color: var(--text-color);
+}
+
+.pagos-container
 {
     height: 100%;
     width: 100%;
@@ -6,11 +10,11 @@
     display: flex;
     flex-direction: column;
     padding: 1rem;
-    gap: 1rem;
+    /* gap: 1rem; */
     overflow-y: auto;
 }
 
-.matricula-container .matricula-header
+.pagos-container .pagos-header
 {
     color: var(--text-color);
     display: flex;
@@ -19,7 +23,7 @@
     font-size: 1.3rem;
 }
 
-.matricula-container .matricula-separador
+.pagos-container .pagos-separador
 {
     background-color: #404040;
     height: 90%;
@@ -27,7 +31,7 @@
     border-radius: 1.5px;
 }
 
-.matricula-container .matricula-desc
+.pagos-container .pagos-desc
 {
     display: flex;
     gap: .4rem;
@@ -36,19 +40,23 @@
     color: #dadada;
 }
 
+.pagos-desc span{
+    color: #d9d4d4;
+}
+
 .house
 {
     color: #FFC736;
 }
 
-.matricula-content
+.pagos-content
 {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    /* gap: 1rem; */
 }
 
-.matricula-table-container
+.pagos-table-container
 {
     background-color: #d9d9d9;
     border-radius: .3rem;
@@ -56,7 +64,7 @@
     padding: .5rem;
     display: flex;
     align-items: flex-start;
-    gap: .5rem;
+    /* gap: .5rem; */
 }
 
 .table 
@@ -66,7 +74,12 @@
     overflow-x: auto;
 }
 
-.table table
+.table-idicaciones{
+    width: 100%;
+    border-radius: .3rem;
+}
+
+.table-idicaciones table, .table table
 {
     width: 100%;
     text-align: center;
@@ -85,7 +98,7 @@
 }
 
 @media (max-width:1045px){
-    .matricula-table-container.description{
+    .pagos-table-container.description{
         display: flex;
         flex-direction: column;
     }
@@ -102,7 +115,7 @@
 }
 
 
-.table table thead,tfoot
+.table-idicaciones table, .table table thead,tfoot
 {
     background-color: #404040;
     color: #fff;
@@ -166,7 +179,7 @@
     text-align: right;
 }
 
-.matricula-button-container
+.pagos-button-container
 {
     display: flex;
     align-items: center;
@@ -191,7 +204,7 @@
     transition: all ease-in-out 250ms;
 }
 
-.matricula-button-container .button
+.pagos-button-container .button
 {
     padding: .5rem;
     width: 20rem;
@@ -200,7 +213,7 @@
     gap: 1rem;
 }
 
-.matricula-button-container .button span{
+.pagos-button-container .button span{
     font-family: 'Zen Dots', cursive;
 }
 
@@ -306,29 +319,72 @@ iframe
     border: none;
     border-radius: 10px;
 }
-/* a link deudas*/
-p.deudas{
+
+/*
+explicacion
+*/
+.container-descripcion{
+    padding: 6px;
+}
+.container-descripcion p{
+    font-size: 14px;
+}
+.container-descripcion hr{
+    margin: 36px;
+}
+.container-descripcion div{
+    height: 0;
+}
+.container-descripcion div a{
+    position: relative;
+    top: -48px;
+    color: var(--button-color);
+    font-size: 18px;
+    font-weight: 100;
+    z-index: 2;
+    background-color: #404040;
+    padding: 16px;
+}
+.title-descripcion h2{
+    color: var(--button-color);
+}
+/*end explicacion*/
+
+
+/*table config*/
+.table{
+    padding-top: 14px;
+    background: #373737;
+}
+.Table-title{
+    position: relative;
+    z-index: 2;
+    top: 0px;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    background: linear-gradient(0deg, #2f6bb1 25%, #03171f 120%);
+    padding: 12px 7px;
+    border-radius: 7px 7px 0 0;
+    /* height: 0; */
+    margin: 0;
+}
+.rounted-table-container{
+    height: 17px;
     display: flex;
-    align-items: center;
     justify-content: center;
 }
-.deudas-link{
-    align-self: center;
+
+.rounted-table-container .rounted-table{
     position: relative;
-    margin-top: -61px;
-    text-decoration: none;
-    background-color: #d9d9d9;
-    padding-left: 6px;
-    padding-right: 6px;
-    color: #0062ff;
+    background: #2f6bb1;
+    padding: 23px;
     z-index: 1;
+    top: 29px;
+    border-radius: 23px;
 }
-.deudas-link:hover{
-    text-decoration: underline;
+.pagos-table-container{
+    border-radius: 0;
 }
 
-hr{
-    margin: 28px;
-    color: #c91212;
-    background-color: #373737;
-}
+/* end table config*/

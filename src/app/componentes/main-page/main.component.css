@@ -17,10 +17,9 @@
 }
 
 .barra-lateral {
-    transition: all ease-in-out 400ms;
+    transition: all ease-in-out 300ms;
     background-color: var(--bg-color-barra-lateral);
     height: 100vh;
-
     color: var(--text-color);
 }
 
@@ -93,14 +92,14 @@
 }
 
 .item {
-    transition: all ease-in-out 200ms;
+    transition: all ease-in-out 1000ms;
     height: 3.5rem;
-
     display: flex;
     align-items: center;
     gap: 1rem;
 
     padding-left: 2rem;
+
 }
 
 .item i {
@@ -124,6 +123,48 @@
     color: var(--text-hover-color);
     cursor: pointer;
 }
+
+.barra-lateral .items {
+
+}
+
+/**/
+.barra-lateral .items .item .right{
+    position: relative;
+    float: left;
+}
+
+.barra-lateral .items .item.active .right span {
+    background-color: #393939;
+    display: flex;
+    top: 0;
+    width: 0;
+    animation: 1s escribir steps(10);
+    position: absolute;
+    right: 0;
+    text-align: end;
+}
+
+.barra-lateral .items .item .right span {
+    background-color: var(--bg-color-barra-lateral);
+    display: flex;
+    top: 0;
+    width: 0;
+    animation: 1s escribir steps(10);
+    position: absolute;
+    right: 0;
+    text-align: end;
+}
+
+@keyframes escribir{
+    from {
+        width: 100%;
+    }
+    to{
+        width: 0;
+    }
+}
+/**/
 
 /*tooltip rigth*/
 .tooltip {

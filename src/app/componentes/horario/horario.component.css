@@ -231,13 +231,29 @@
 }
 
 @keyframes tiembla_bottom{
-    0%  { transform:rotateZ( 5deg) translateY(-100%); }
-    50% { transform:rotateZ( 0deg) scale(1.05) translateY(-100%); }
-    100%{ transform:rotateZ( 5deg) translateY(-100%); }
+    0%  { transform:rotateZ( -2deg) translateY(-100%); }
+    10% { transform:rotateZ( 0deg) translateY(-100%); }
+    20% { transform:rotateZ( 2deg) translateY(-100%); }
+    30% { transform:rotateZ( 0deg) translateY(-100%); }
+    40% { transform:rotateZ( -2deg) translateY(-100%); }
+    50% { transform:rotateZ( 0deg) translateY(-100%); }
+    60% { transform:rotateZ( 2deg) translateY(-100%); }
+    70% { transform:rotateZ( 0deg) translateY(-100%); }
+    80% { transform:rotateZ( -2deg) translateY(-100%); }
+    90% { transform:rotateZ( 0deg) translateY(-100%); }
+    100%{ transform:rotateZ( 2deg) translateY(-100%); }
 }
 
 @keyframes tiembla_top{
-    0%  { transform:rotateZ( 5deg); }
-    50% { transform:rotateZ( 0deg) scale(1.05); }
+    0%  { transform:rotateZ( -5deg); }
+    10% { transform:rotateZ( 0deg); }
+    20% { transform:rotateZ( 5deg); }
+    30% { transform:rotateZ( 0deg); }
+    40% { transform:rotateZ( -5deg); }
+    50% { transform:rotateZ( 0deg); }
+    60% { transform:rotateZ( 5deg); }
+    70% { transform:rotateZ( 0deg); }
+    80% { transform:rotateZ( -5deg); }
+    90% { transform:rotateZ( 0deg); }
     100%{ transform:rotateZ( 5deg); }
 }

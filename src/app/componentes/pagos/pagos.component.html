@@ -1,0 +1,143 @@
+<div class="pagos-container">
+    <div class="pagos-header">
+        <div class="pagos-title">
+            <span>Pagos</span>
+        </div>
+        <div class="pagos-separador"></div>
+        <div class="pagos-desc">
+            <i class="fa-solid fa-pay  home"></i>
+            <i class="fa-solid fa-chevron-right"></i>
+            <span>Detalle Pagos</span>
+        </div>
+        <div class="pagos-desc">
+            <i class="fa-solid fa-chevron-right"></i>
+            <span> {{userMail}} </span>
+        </div>
+    </div>
+    <div class="pagos-content">
+        <div class="rounted-table-container">
+            <p class="rounted-table"></p>
+        </div>
+        <p class="Table-title">Pagos Pendientes</p>
+        <div class="pagos-table-container">
+            <div></div>
+            <div class="table">
+                
+                <table>
+                    
+                    <thead>
+                        <tr>
+                            <th>N°</th>
+                            <th>CÓD. DE CURSO</th>
+                            <th>ASIGNATURA</th>
+                            <th>HORARIO</th>
+                            <th>VACANTE</th>
+                            <th>DOCENTE</th>
+                            <th>ACCIONES</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngIf="PAGOS_DATA.length == 0">
+                            <td colspan="7">
+                                <div class="title-descripcion"><h2>¡USTED NO CUENTA CON pagos!</h2></div>
+                                <div class="container-descripcion">
+                                    <p><strong> ¡Felicidades sigue así, estimado usuario!</strong></p>
+                                    <p>Todas tus pagos apareceran Aquí y podrás ver en detalle los motivos de ellas, si crees que se trata de un error deberás acércarte a la dependencia de tu escuela (CEIS) para revisar de que se trata dicho error.</p>
+                                    <hr>
+                                    <div><a>Atte: CEIS 2022-2023</a></div>
+                                </div>                                
+                            </td>
+                        </tr>
+                        <tr *ngFor="let pago of PAGOS_DATA">
+                            <td> {{pago.name}} </td>
+                            <td>{{pago.b}}</td>
+                            <td>{{pago.c}}</td>
+                            <td>{{pago.d}}</td>
+                            <td>{{pago.e}}</td>
+                            <td>{{pago.f}}</td>
+                            <td>{{pago.g}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div *ngIf="PAGOS_DATA.length != 0" class="rounted-table-container">
+            <p class="rounted-table"></p>
+        </div>
+        <p *ngIf="PAGOS_DATA.length != 0" class="Table-title">INDICACIONES</p>
+        <div *ngIf="PAGOS_DATA.length != 0" class="pagos-table-container">
+            
+            <div class="table-idicaciones">
+                <table>
+                    <tbody>
+                        <tr >
+                            <td colspan="7">
+                                <div class="title-descripcion"><h2>¡USTED NO CUENTA CON pagos!</h2></div>
+                                <div class="container-descripcion">
+                                    <p><strong style="font-size: larger;">Aquí tienes algunas indicaciones</strong></p>
+                                   <p>A. hola xd</p>
+                                   <p>B. </p>
+                                   <p>C. </p>
+                                   <p>D. </p>
+                                   <p>E. </p>
+                                    <hr>
+                                    <div><a>Atte: CEIS 2022-2023</a></div>
+                                </div>                                
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- tabla para ver pagos realizados -->
+        <div class="rounted-table-container">
+            <p class="rounted-table"></p>
+        </div>
+        <p class="Table-title">Pagos Realizados</p>
+        <div class="pagos-table-container">
+            <div class="table">
+                
+                <table>
+                    
+                    <thead>
+                        <tr>
+                            <th>N°</th>
+                            <th>CÓD. DE CURSO</th>
+                            <th>ASIGNATURA</th>
+                            <th>HORARIO</th>
+                            <th>VACANTE</th>
+                            <th>DOCENTE</th>
+                            <th>ACCIONES</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngIf="PAGOS_DATA.length == 0">
+                            <td colspan="7">
+                                <div class="title-descripcion"><h2>¡USTED NO CUENTA CON pagos!</h2></div>
+                                <div class="container-descripcion">
+                                    <p><strong> ¡Felicidades sigue así, estimado usuario!</strong></p>
+                                    <p>Todas tus pagos apareceran Aquí y podrás ver en detalle los motivos de ellas, si crees que se trata de un error deberás acércarte a la dependencia de tu escuela (CEIS) para revisar de que se trata dicho error.</p>
+                                    <hr>
+                                    <div><a>Atte: CEIS 2022-2023</a></div>
+                                </div>                                
+                            </td>
+                        </tr>
+                        <tr *ngFor="let pago of PAGOS_DATA">
+                            <td> {{pago.name}} </td>
+                            <td>{{pago.b}}</td>
+                            <td>{{pago.c}}</td>
+                            <td>{{pago.d}}</td>
+                            <td>{{pago.e}}</td>
+                            <td>{{pago.f}}</td>
+                            <td>{{pago.g}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- fin de tabla de pagos realizados -->
+
+    </div>
+</div>

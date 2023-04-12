@@ -17,6 +17,9 @@ import { LoadingComponent } from './componentes/loading/loading.component';
 import { ForbiddenComponent } from './componentes/forbidden/forbidden.component';
 import { MatriculaComponent } from './componentes/matricula/matricula.component';
 import { HorarioComponent } from './componentes/horario/horario.component';
+import { provideDatabase,getDatabase } from '@angular/fire/database';
+import { PagosComponent } from './componentes/pagos/pagos.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,8 @@ import { HorarioComponent } from './componentes/horario/horario.component';
     LoadingComponent,
     ForbiddenComponent,
     MatriculaComponent,
-    HorarioComponent
+    HorarioComponent,
+    PagosComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,6 +41,8 @@ import { HorarioComponent } from './componentes/horario/horario.component';
     provideFirestore(() => getFirestore()),
     provideStorage(() => getStorage()),
     SweetAlert2Module.forRoot(),
+    provideDatabase(() => getDatabase()),
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

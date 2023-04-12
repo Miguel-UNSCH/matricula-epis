@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 
 import { UserService } from 'src/app/Services/user/user.service';
 
-import { interval, Subscription } from 'rxjs';
+import { interval, Subscriber, Subscription } from 'rxjs';
 import { UserI } from 'src/app/Interfaces/user/UserI';
 import { Auth, User } from 'firebase/auth';
 
@@ -42,7 +42,7 @@ export class MainComponent implements OnInit, AfterViewInit, OnDestroy {
   
   @ViewChild('items') Items! : ElementRef;
 
-  btnActive(i: number, name: string) {
+  public btnActive(i: number, name: string) {
     // 0: Horarios
     // 1: Docentes
     // 2: Matricula
@@ -76,14 +76,47 @@ export class MainComponent implements OnInit, AfterViewInit, OnDestroy {
       //comprueba si hay un usuario y verifica el email para permitir el acceso
       if(this.$User){
         this.userSevice.VerificarUser(this.userSevice.VerifiedEmail(this.$User.email!))
-      this.permitido = this.userSevice.esVerificado()
+      this.permitido = true// this.userSevice.esVerificado()
     }else{
       this.userSevice.logOut()
-      this.route.navigate(['/login'])
-      
+     this.route.navigate(['/login'])
     }
     }else{
       this.userSevice.logOut()
+    }
+  }
+
+  private timer! : Subscription;
+
+  alerta = Swal.mixin({
+    toast: true,
+    timer: 2500,
+    showConfirmButton: false,
+    position: 'center',
+  })
+
+  date = new Date();
+  duration = 1800000
+  milliSecondsInASecond = 1000;
+  hoursInADay = 24;
+  minutesInAnHour = 60;
+  SecondsInAMinute  = 60;
+
+  public timeDifference: any = this.duration;
+  public secondsToDday : any;
+  public minutesToDday : any;
+  public hoursToDday : any;
+  public daysToDday : any;
+
+  private getTimeDifference () {
+    this.timeDifference -=  1000
+    this.allocateTimeUnits(this.timeDifference);
+  }
+  private allocateTimeUnits (timeDifference: any) {
+    this.secondsToDday = Math.floor((timeDifference) / (this.milliSecondsInASecond) % this.SecondsInAMinute);
+    this.minutesToDday = Math.floor((timeDifference) / (this.milliSecondsInASecond * this.minutesInAnHour) % this.SecondsInAMinute);
+    this.hoursToDday = Math.floor((timeDifference) / (this.milliSecondsInASecond * this.minutesInAnHour * this.SecondsInAMinute) % this.hoursInADay);
+    this.daysToDday = Math.floor((timeDifference) / (this.milliSecondsInASecond * this.minutesInAnHour * this.SecondsInAMinute * this.hoursInADay));
   }
 
 
@@ -134,27 +167,50 @@ export class MainComponent implements OnInit, AfterViewInit, OnDestroy {
 
       //DOM const
       const DOM = this.render
-    //DOM const
-    const DOM = this.render
 
+       // ----------------- Opciones de Usuario or vista telefono ------------
+       let activeOpt = this.activeUserOptions
 
       // Container element
       const CONTAINER = this.container.nativeElement
-    // Container element
-    const CONTAINER = this.container.nativeElement
 
-    //lateral const
-    const LATERAL = this.Lateral.nativeElement
+      //lateral const
+      const LATERAL = this.Lateral.nativeElement
 
-    const SHOW_BTN = this.ShowButton.nativeElement
+      const SHOW_BTN = this.ShowButton.nativeElement
 
       const ITEMS = this.Items.nativeElement
+
+      const USER_CONT = this.UserCont.nativeElement // cont donde se ejecuta evento  
+      const VISTA_OPCIONES = this.VistaOpciones.nativeElement // vista de opciones
+
+      DOM.listen(USER_CONT, 'click', showHideOptions)
+      DOM.listen(VISTA_OPCIONES, 'click', showHideOptions)
+
+      function showHideOptions(){
+        if (activeOpt) {
+          VISTA_OPCIONES.style.display = 'none';
+          activeOpt = false;
+        }else{
+          VISTA_OPCIONES.style.display = 'block';
+          activeOpt = true;
+        }
+      }
 
     DOM.listen(SHOW_BTN, 'click', hideShowLateral)
 
     //funcion for events
     function hideShowLateral (e: any){
-      let element = e.path[0]
+      let element = e
+      console.log(element);
+      try {
+        element = e.path[0]
+        console.log(element);
+      } catch (error) {
+        
+      }
+      
+      
       e.preventDefault();
       e.stopPropagation()
       if(TOOGLE){
@@ -194,8 +250,7 @@ export class MainComponent implements OnInit, AfterViewInit, OnDestroy {
         // e.path[0].childNodes[0].className = 'fa-solid fa-chevron-left';
       }
       // console.log(e.path[0])
+    }    
     }
-    
-    
   }
 }

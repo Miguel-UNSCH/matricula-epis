@@ -30,14 +30,14 @@ export class LoginComponent implements OnInit {
     color: 'white',
   })
 
-  userExists(){
-    this.isUser = this.userService.getCurrentUser()
+  userExists(): User | null {
+    return this.userService.getCurrentUser();
   }
 
   // here Constructor
   constructor(private auth : Auth, private route : Router, private userService : UserService){ 
-    this.userExists()
-    if(this.isUser){
+    
+    if(this.userExists()){
       this.route.navigate(['/usuario'])
     }
   }
@@ -68,6 +68,7 @@ export class LoginComponent implements OnInit {
       }))
       let email = auth.currentUser?.email
       let name = auth.currentUser?.displayName
+      
       // login user
       this.loading = true;
       OBS.subscribe({
@@ -95,7 +96,14 @@ export class LoginComponent implements OnInit {
         }
       });
       
-    }, err => {console.error('Ocurrió un error: ', err.message)});
+    }, err => {console.error('Ocurrió un error: ', err.message);
+    ALERT.fire({
+      text: '¡Ocurrió un error inesperado! ' + "\n consulte con el administrador para resolver el problema",
+      background: 'red',
+      icon: 'error'
+    })
+  
+              });
   }
 
   ngOnInit(): void {

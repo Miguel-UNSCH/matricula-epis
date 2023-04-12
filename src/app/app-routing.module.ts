@@ -1,3 +1,4 @@
+import { PagosComponent } from './componentes/pagos/pagos.component';
 import { MainComponent } from './componentes/main-page/main.component';
 import { NotFundComponent } from './componentes/not-fund/not-fund.component';
 import { NgModule } from '@angular/core';
@@ -31,14 +32,18 @@ const routes: Routes = [
       {
         path: 'horario',
         component: HorarioComponent
+      },
+      {
+        path: 'pagos/:id',
+        component: PagosComponent,
       }
     ],
     // pathMatch: "full"
   },
-  {
-    path: '**',
-    redirectTo: "404-not-found"
-  },
+  // {
+  //   path: '**',
+  //   redirectTo: "404-not-found"
+  // },
 ];
 
 @NgModule({

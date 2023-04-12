@@ -3,7 +3,7 @@
 <div *ngIf="permitido" class="app">
     <main class="main">
         <div #container class="container">
-            <div #lateral class="barra-lateral hide" id="barra-lateral">
+            <div #lateral class="barra-lateral hide" id="barra-lateral" >
                 <div #escuela class="escuela">
                     <div class="logo">
                         <img src="../../../assets/logosistemas.png" alt="logo-sistemas">
@@ -24,15 +24,17 @@
                         <!-- tooltip right -->
                         <div class="right">
                             <p>Horarios</p>
+                            <span>&#160;</span>
                             <i></i>
-                    </div>
-                        <!-- end tooltip-rigth -->
+                        </div>
+                            <!-- end tooltip-rigth -->
                     </div>
                     <div (click)="btnActive(1, 'docentes')" class="item tooltip" [class.active]="itemName == 'docentes'">
                         <i class="fa-solid fa-person-chalkboard"></i>
                         <!-- tooltip right -->
                         <div class="right">
                             <p>Docentes</p>
+                            <span>&#160;</span>
                             <i></i>
                         </div>
                         <!-- end tooltip-rigth -->
@@ -42,6 +44,7 @@
                         <!-- tooltip right -->
                         <div class="right">
                             <p>Matrícula</p>
+                            <span>&#160;</span>
                             <i></i>
                         </div>
                         <!-- end tooltip-rigth -->
@@ -50,25 +53,28 @@
                         <i class="fa-solid fa-sitemap"></i>
                         <!-- tooltip right -->
                         <div class="right">
-                            <p>Mis cursos</p>
+                            <p>Mis<a style="color: transparent;">_</a>cursos</p>
+                            <span>&#160;</span>
                             <i></i>
                     </div>
                         <!-- end tooltip-rigth -->
                     </div>
-                    <div (click)="btnActive(4, 'deudas')" class="item tooltip" [class.active]="itemName == 'deudas'">
+                    <div (click)="btnActive(4, 'deudas')" class="item tooltip" [class.active]="itemName == 'deudas'" >
                         <i class="fa-solid fa-money-check-dollar"></i>
                         <!-- tooltip right -->
                         <div class="right">
-                            <p>Mis deudas</p>
+                            <p>Mis<a style="color: transparent;">_</a>deudas</p>
+                            <span>&#160;</span>
                             <i></i>
                     </div>
                         <!-- end tooltip-rigth -->
                     </div>
-                    <div (click)="btnActive(5, 'pagos')" class="item tooltip" [class.active]="itemName == 'pagos'">
+                    <div (click)="btnActive(5, 'pagos')" class="item tooltip" [class.active]="itemName == 'pagos'" [routerLink]="['/usuario/pagos/franklin.figueroa.27@unsch.edu.pe']">
                         <i class="fa-solid fa-money-check"></i>
                         <!-- tooltip right -->
                         <div class="right">
-                            <p>Mis pagos</p>
+                            <p>Mis<a style="color: transparent;">_</a>pagos</p>
+                            <span>&#160;</span>
                             <i></i>
                     </div>
                         <!-- end tooltip-rigth -->
@@ -78,6 +84,7 @@
                         <!-- tooltip right -->
                         <div class="right">
                             <p>Ajustes</p>
+                            <span>&#160;</span>
                             <i></i>
                     </div>
                         <!-- end tooltip-rigth -->
@@ -87,6 +94,7 @@
                         <!-- tooltip right -->
                         <div class="right">
                             <p>Usuario</p>
+                            <span>&#160;</span>
                             <i></i>
                         </div>
                         <!-- end tooltip-rigth -->
@@ -106,7 +114,7 @@
                         <div class="separator-column"></div>
                         <div #userBar class="user-info">
                             <div class="photo" id="photo">
-                                <img [src]="$User?.photoURL ||'https://media.istockphoto.com/id/1393750072/vector/flat-white-icon-man-for-web-design-silhouette-flat-illustration-vector-illustration-stock.jpg?b=1&s=612x612&w=0&k=20&c=Dnxc_cOvh1zQjTE8Za9MMADydkRc8lSKzIEX6ej9H8g='"
+                                <img [src]="$User?.photoURL ||'../../assets/img/logo-icades.png'"
                                     alt="foto-perfil">
                             </div>
                             <div class="desc">
@@ -132,11 +140,7 @@
                             <i class="fa-solid fa-list-check"></i>
                             <span>Horarios</span>
                         </div>
-<<<<<<< HEAD
-                        <div  class="item" [routerLink]="['/usuario/matricula']">
-=======
                         <div (click)="btnActive(2, 'matricula')" class="item" [routerLink]="['/usuario/matricula']">
->>>>>>> master
                             <i class="fa-solid fa-pen-to-square"></i>
                             <span>Matrícula</span>
                         </div>
@@ -144,7 +148,7 @@
                             <i class="fa-solid fa-sitemap"></i>
                             <span>Mis cursos</span>
                         </div>
-                        <div class="item">
+                        <div class="item"  [routerLink]="['/usuario/franklin.figueroa.27@unsch.edu.pe']">
                             <i class="fa-solid fa-money-check-dollar"></i>
                             <span>Mis deudas</span>
                         </div>
