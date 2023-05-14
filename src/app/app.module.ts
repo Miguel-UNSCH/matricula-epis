@@ -27,6 +27,8 @@ import {MatTableModule} from '@angular/material/table';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { PrimeNgModule } from './prime-ng/prime-ng.module';
+import { UsuarioComponent } from './componentes/usuario/usuario.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -40,6 +42,7 @@ import { PrimeNgModule } from './prime-ng/prime-ng.module';
     HorarioComponent,
     DeudasComponent,
     PagosComponent,
+    UsuarioComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,6 +54,7 @@ import { PrimeNgModule } from './prime-ng/prime-ng.module';
     SweetAlert2Module.forRoot(),
     provideDatabase(() => getDatabase()),
     HttpClientModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     MatTableModule,
     MatFormFieldModule,

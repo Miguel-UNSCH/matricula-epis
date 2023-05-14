@@ -89,7 +89,7 @@
                     </div>
                         <!-- end tooltip-rigth -->
                     </div>
-                    <div (click)="btnActive(7, 'usuario')" class="item tooltip" [class.active]="itemName == 'usuario'">
+                    <div (click)="btnActive(7, 'usuario')" class="item tooltip" [class.active]="itemName == 'usuario'" [routerLink]="['/usuario/usuario']">
                         <i class="fa-solid fa-user"></i>
                         <!-- tooltip right -->
                         <div class="right">
@@ -105,10 +105,10 @@
                 <div class="navbar">
                     <div class="title">
                         <img class="logo" src="../../../assets/logosistemas.png" alt="logo-sistemas">
-                        <span class="app-name">SISTEMA DE MATRÍCULA EPIS UNSCH                             
-                        <span class="timer">{{minutesToDday < 10 ? '0' + minutesToDday : minutesToDday}} min : {{secondsToDday < 10 ? '0' + secondsToDday : secondsToDday}} seg</span> 
+                        <span class="app-name">SISTEMA DE MATRÍCULA EPIS UNSCH
+                        <span class="timer">{{minutesToDday < 10 ? '0' + minutesToDday : minutesToDday}} min : {{secondsToDday < 10 ? '0' + secondsToDday : secondsToDday}} seg</span>
                         </span>
-                        
+
                     </div>
                     <div #userCont class="user">
                         <div class="separator-column"></div>

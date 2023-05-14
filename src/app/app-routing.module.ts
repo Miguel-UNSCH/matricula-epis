@@ -7,6 +7,7 @@ import { LoginComponent } from './componentes/login/login.component';
 import { MatriculaComponent } from './componentes/matricula/matricula.component';
 import { HorarioComponent } from './componentes/horario/horario.component';
 import { DeudasComponent } from './componentes/deudas/deudas.component';
+import { UsuarioComponent } from './componentes/usuario/usuario.component';
 
 const routes: Routes = [
   {
@@ -41,6 +42,10 @@ const routes: Routes = [
       {
         path: 'deudas',
         component: DeudasComponent
+      },
+      {
+        path: 'usuario',
+        component: UsuarioComponent
       }
     ],
     // pathMatch: "full"

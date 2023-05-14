@@ -1,0 +1,339 @@
+<div class="usuario-container">
+  <div class="usuario-header">
+    <div class="usuario-title">
+      <span>Usuario</span>
+    </div>
+    <div class="usuario-separador"></div>
+    <div class="usuario-desc">
+      <i class="fa-solid fa-list-check icon"></i>
+      <i class="fa-solid fa-chevron-right"></i>
+      <span>{{ user | titlecase }}</span>
+    </div>
+  </div>
+
+  <div class="main">
+    <div class="main-container">
+      <div class="img-container">
+        <div class="img-banner">
+          <button
+            class="button-cambiar"
+            pButton
+            label="Cambiar fondo"
+            icon="pi pi-image"
+            styleClass="p-button-sm"
+          ></button>
+        </div>
+      </div>
+
+      <div class="logo-container">
+        <img class="img-logo" src="./assets/img/logo-icades.png" alt="" />
+      </div>
+
+      <div class="formulario-container">
+        <form
+          [formGroup]="myForm"
+          (ngSubmit)="onSave()"
+          class="formulario"
+          autocomplete="off"
+        >
+          <div class="datos">
+            <h3 class="titulo">DATOS DEL ESTUDIANTE</h3>
+
+            <div class="campo">
+              <label class="campo__label" for="nombres">Nombres: </label>
+
+              <div class="input-error-container">
+                <input
+                  class="campo__field"
+                  formControlName="nombres"
+                  type="text"
+                  placeholder="Tus nombres"
+                  id="nombres"
+                />
+
+                <span *ngIf="isValidField('nombres')" class="error-text">
+                  {{ getFieldError("nombres") }}
+                </span>
+              </div>
+            </div>
+
+            <div class="campo">
+              <label class="campo__label" for="apellidos">Apellidos: </label>
+
+              <div class="input-error-container">
+                <input
+                  class="campo__field"
+                  formControlName="apellidos"
+                  type="text"
+                  placeholder="Tus apellidos"
+                  id="apellidos"
+                />
+
+                <span *ngIf="isValidField('apellidos')" class="error-text">
+                  {{ getFieldError("apellidos") }}
+                </span>
+              </div>
+            </div>
+
+            <div class="campo">
+              <label class="campo__label" for="codigo">Código: </label>
+
+              <div class="input-error-container">
+                <input
+                  class="campo__field"
+                  formControlName="codigo"
+                  type="text"
+                  placeholder="Tu codigo"
+                  id="codigo"
+                />
+
+                <span *ngIf="isValidField('codigo')" class="error-text">
+                  {{ getFieldError("codigo") }}
+                </span>
+              </div>
+            </div>
+
+            <div class="campo">
+              <label class="campo__label" for="serie">Serie: </label>
+
+              <div class="input-error-container">
+                <input
+                  class="campo__field"
+                  formControlName="serie"
+                  type="text"
+                  placeholder="SERIE 000"
+                  id="serie"
+                />
+
+                <span *ngIf="isValidField('serie')" class="error-text">
+                  {{ getFieldError("serie") }}
+                </span>
+              </div>
+            </div>
+
+            <div class="campo">
+              <label class="campo__label" for="semestre"
+                >Semestre académico:
+              </label>
+
+              <div class="input-error-container">
+                <input
+                  class="campo__field"
+                  formControlName="semestre"
+                  type="text"
+                  placeholder="SEMESTRE 20XX-XX"
+                  id="semestre"
+                />
+
+                <span *ngIf="isValidField('semestre')" class="error-text">
+                  {{ getFieldError("semestre") }}
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="contacto">
+            <h3 class="titulo">CONTACTOS</h3>
+
+            <div class="campo">
+              <label class="campo__label" for="celular"
+                ><i class="fa-solid fa-mobile-screen-button"></i> N° de celular:
+              </label>
+
+              <div class="input-error-container">
+                <input
+                  class="campo__field"
+                  formControlName="celular"
+                  type="text"
+                  placeholder="Tu número de celular"
+                  id="celular"
+                />
+
+                <span *ngIf="isValidField('celular')" class="error-text">
+                  {{ getFieldError("celular") }}
+                </span>
+              </div>
+            </div>
+
+            <div class="campo">
+              <label class="campo__label" for="facebook"
+                ><i class="fa-brands fa-facebook"></i> Facebook:
+              </label>
+
+              <div class="input-error-container">
+                <input
+                  class="campo__field"
+                  formControlName="facebook"
+                  type="text"
+                  placeholder="Link de tu perfil de Facebook"
+                  id="facebook"
+                />
+
+                <span *ngIf="isValidField('facebook')" class="error-text">
+                  {{ getFieldError("facebook") }}
+                </span>
+              </div>
+            </div>
+
+            <div class="campo">
+              <label class="campo__label" for="whatsapp"
+                ><i class="fa-brands fa-whatsapp"></i> WhatsApp:
+              </label>
+
+              <div class="input-error-container">
+                <input
+                  class="campo__field"
+                  formControlName="whatsaap"
+                  type="text"
+                  placeholder="Tu número de WhatsApp"
+                  id="whatsapp"
+                />
+
+                <span *ngIf="isValidField('whatsaap')" class="error-text">
+                  {{ getFieldError("whatsaap") }}
+                </span>
+              </div>
+            </div>
+
+            <div class="campo">
+              <label class="campo__label" for="linkedin"
+                ><i class="fa-brands fa-linkedin"></i> LinkedIn:
+              </label>
+
+              <div class="input-error-container">
+                <input
+                  class="campo__field"
+                  formControlName="linkedin"
+                  type="text"
+                  placeholder="Link de tu perfil de LinkedIn"
+                  id="linkedin"
+                />
+
+                <span *ngIf="isValidField('linkedin')" class="error-text">
+                  {{ getFieldError("linkedin") }}
+                </span>
+              </div>
+            </div>
+
+            <div class="campo">
+              <label class="campo__label" for="correo"
+                ><i class="fa-brands fa-google"></i> Correo institucional:
+              </label>
+
+              <div class="input-error-container">
+                <input
+                  class="campo__field"
+                  formControlName="correo"
+                  type="email"
+                  placeholder="Tu correo institucional"
+                  id="correo"
+                />
+
+                <span *ngIf="isValidField('correo')" class="error-text">
+                  {{ getFieldError("correo") }}
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="acciones-container">
+            <div class="switch-button">
+              <span>Actualizar datos </span>
+              <!-- Checkbox -->
+              <input type="checkbox" name="switch-button" id="switch-label" class="switch-button__checkbox">
+              <!-- Botón -->
+              <label for="switch-label" class="switch-button__label"></label>
+            </div>
+
+
+            <div class="guardar">
+              <button class="button-guardar" type="submit">
+                <i class="fa-solid fa-floppy-disk"></i> Guardar datos
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <span>Valid</span>
+          <pre>{{ myForm.valid | json }}</pre>
+          <br />
+
+          <span>Pristine</span>
+          <pre>{{ myForm.pristine | json }}</pre>
+          <br />
+
+          <span>Touched</span>
+          <pre>{{ myForm.touched | json }}</pre>
+          <br />
+
+          <span>Value</span>
+          <pre>{{ myForm.value | json }}</pre>
+          <br />
+
+          <span>Nombres</span>
+          <pre>{{ myForm.controls["nombres"].value | json }}</pre>
+          <span>Nombres - Errors</span>
+          <pre>{{ myForm.controls["nombres"].errors | json }}</pre>
+          <br />
+
+          <span>apellidos</span>
+          <pre>{{ myForm.controls["apellidos"].value | json }}</pre>
+          <span>apellidos - Errors</span>
+          <pre>{{ myForm.controls["apellidos"].errors | json }}</pre>
+          <br />
+
+          <span>codigo</span>
+          <pre>{{ myForm.controls["codigo"].value | json }}</pre>
+          <span>codigo - Errors</span>
+          <pre>{{ myForm.controls["codigo"].errors | json }}</pre>
+          <br />
+
+          <span>serie</span>
+          <pre>{{ myForm.controls["serie"].value | json }}</pre>
+          <span>serie - Errors</span>
+          <pre>{{ myForm.controls["serie"].errors | json }}</pre>
+          <br />
+
+          <span>semestre</span>
+          <pre>{{ myForm.controls["semestre"].value | json }}</pre>
+          <span>semestre - Errors</span>
+          <pre>{{ myForm.controls["semestre"].errors | json }}</pre>
+          <br />
+
+          <span>celular</span>
+          <pre>{{ myForm.controls["celular"].value | json }}</pre>
+          <span>celular - Errors</span>
+          <pre>{{ myForm.controls["celular"].errors | json }}</pre>
+          <br />
+
+          <span>facebook</span>
+          <pre>{{ myForm.controls["facebook"].value | json }}</pre>
+          <span>facebook - Errors</span>
+          <pre>{{ myForm.controls["facebook"].errors | json }}</pre>
+          <br />
+
+          <span>whatsaap</span>
+          <pre>{{ myForm.controls["whatsaap"].value | json }}</pre>
+          <span>whatsaap - Errors</span>
+          <pre>{{ myForm.controls["whatsaap"].errors | json }}</pre>
+          <br />
+
+          <span>linkedin</span>
+          <pre>{{ myForm.controls["linkedin"].value | json }}</pre>
+          <span>linkedin - Errors</span>
+          <pre>{{ myForm.controls["linkedin"].errors | json }}</pre>
+          <br />
+
+          <span>correo</span>
+          <pre>{{ myForm.controls["correo"].value | json }}</pre>
+          <span>correo - Errors</span>
+          <pre>{{ myForm.controls["correo"].errors | json }}</pre>
+          <br />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
