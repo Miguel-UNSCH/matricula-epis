@@ -14,7 +14,6 @@ export class UserService {
   private Verify : boolean = true;
 
   esVerificado() : boolean{
-    
     return this.Verify
   }
 
@@ -23,14 +22,22 @@ export class UserService {
   }
 
   getCurrentUser(){
-    return this.afAuth.currentUser
+    const afAuthUser = this.afAuth.currentUser
+    const isUser = JSON.parse(localStorage.getItem("407h")!)
+    if (afAuthUser){
+      return afAuthUser
+    }else if (isUser){
+      return isUser.currentUser
+    }else{
+      return null
+    }
   }
 
   async loginWhitGoogle(): Promise<any>{
-    
+
       return await signInWithPopup(this.afAuth, new GoogleAuthProvider() )
   }
-       
+
   // async refreskToken(user: User ,token : AuthCredential): Promise<any>{
   //   try {
   //     return await reauthenticateWithCredential(user, token)
@@ -61,6 +68,11 @@ export class UserService {
         }}
     }
 
-    return verifiedText == dominioEscuela 
+    return verifiedText == dominioEscuela
+  }
+
+  //revisa si el usuario debe actulizar sus datos
+  UserNeedUpdate() : boolean {
+    return false;
   }
 }

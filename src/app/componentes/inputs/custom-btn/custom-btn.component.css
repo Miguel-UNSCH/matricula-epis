@@ -1,0 +1,51 @@
+
+.matricula-button-container
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.button
+{
+    border: 0.2rem var(--button-color) solid;
+    border-radius: 0.4rem;
+    color: var(--button-color);
+    background-color: transparent;
+    padding: .3rem;
+    cursor: pointer;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.3rem;
+    margin: 0 auto;
+    transition: all ease-in-out 250ms;
+}
+
+.button:disabled{
+  border: 0.2rem var(--button-disabled) solid;
+  cursor:not-allowed ;
+  color: var(--button-disabled);
+}
+.button:disabled:hover{
+  background-color: var(--button-disabled);
+}
+
+.matricula-button-container .button
+{
+    padding: .5rem 1.5rem;
+    font-size: 1rem;
+    gap: 1rem;
+}
+
+.matricula-button-container .button span{
+    font-family: 'Zen Dots', cursive;
+}
+
+.button:hover
+{
+    color: var(--text-color);
+    background-color: var(--button-color);
+}

@@ -2,11 +2,15 @@ import { PagosComponent } from './componentes/pagos/pagos.component';
 import { MainComponent } from './componentes/main-page/main.component';
 import { NotFundComponent } from './componentes/not-fund/not-fund.component';
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, CanActivate } from '@angular/router';
 import { LoginComponent } from './componentes/login/login.component';
 import { MatriculaComponent } from './componentes/matricula/matricula.component';
 import { HorarioComponent } from './componentes/horario/horario.component';
 import { DeudasComponent } from './componentes/deudas/deudas.component';
+import { AdminComponent } from './componentes/admin/admin.component';
+import { AuthGuardGuard } from './Guards/auth-guard.guard';
+import { ForbiddenComponent } from './componentes/forbidden/forbidden.component';
+import { LoginGuard } from './Guards/login.guard';
 
 const routes: Routes = [
   {
@@ -16,7 +20,8 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    component: LoginComponent
+    component: LoginComponent,
+    canActivate : [LoginGuard]
   },
   {
     path: '404-not-found',
@@ -25,6 +30,8 @@ const routes: Routes = [
   {
     path: 'usuario',
     component: MainComponent,
+    canActivate : [AuthGuardGuard],
+    canActivateChild : [], 
     children: [
       {
         path: 'matricula',
@@ -41,14 +48,18 @@ const routes: Routes = [
       {
         path: 'deudas',
         component: DeudasComponent
+      },
+      {
+        path: "admin",
+        component : AdminComponent
       }
     ],
     // pathMatch: "full"
   },
-  // {
-  //   path: '**',
-  //   redirectTo: "404-not-found"
-  // },
+  {
+    path: 'forbidden',
+    component: ForbiddenComponent
+  },
 ];
 
 @NgModule({

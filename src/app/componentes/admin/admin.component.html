@@ -1,0 +1,71 @@
+<div class="admin-container">
+    <div class="admin-header">
+        <div class="admin-title">
+            <span>ADMINISTRADOR </span> <i class="pi pi-verified icon-verifid"></i>
+        </div>
+        <div class="admin-separador"></div>
+        <div class="admin-desc">
+            <i class="pi pi-shield icon"></i>
+            <i class="fa-solid fa-chevron-right"></i>
+            <span>Mis admin</span>
+        </div>
+    </div>
+    <div class="main">
+        <div class="content">
+            <!-- content -->
+        <div class="card">
+            <p-tabView styleClass="tabview-custom" [(activeIndex)]="activeIndex" [scrollable]="true">
+                <p-tabPanel>
+                    <ng-template pTemplate="header">
+                        <span>Administrar Horarios <i class="pi pi-book"></i></span>
+                    </ng-template>
+                    <!-- administracion de horarios -->
+                    <app-horarios-admin></app-horarios-admin>
+                    <!-- end administracion de horario -->
+                </p-tabPanel>
+                <p-tabPanel header="Header II">
+                    <ng-template pTemplate="header">
+                        <i class="pi pi-user"></i>
+                        <span>Header II</span>
+                    </ng-template>
+                    <app-admin-resources></app-admin-resources>
+                </p-tabPanel>
+                <p-tabPanel header="Header III">
+                    <ng-template pTemplate="header">
+                        <i class="pi pi-search"></i>
+                        <span>Header III</span>
+                        <i class="pi pi-cog"></i>
+                    </ng-template>
+                        <!-- content  -->
+                </p-tabPanel>
+                <p-tabPanel>
+                    <ng-template pTemplate="header">
+                        <span>hello</span>
+                    </ng-template>
+                    <p>
+                        content
+                    </p>
+                </p-tabPanel>
+                <p-tabPanel>
+                    <ng-template pTemplate="header">
+                        <span>hello</span>
+                    </ng-template>
+                    <p>
+                        content
+                    </p>
+                </p-tabPanel>
+                <p-tabPanel>
+                    <ng-template pTemplate="header">
+                        <span>hello</span>
+                    </ng-template>
+                    <p>
+                        content
+                    </p>
+                </p-tabPanel>
+            </p-tabView>
+        </div>
+        <!-- END CONTENT -->
+        </div>
+    </div>
+</div>
+

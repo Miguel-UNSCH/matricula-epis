@@ -7,8 +7,11 @@ import { interval, Subscriber, Subscription } from 'rxjs';
 import { UserI } from 'src/app/Interfaces/user/UserI';
 import { Auth, User } from 'firebase/auth';
 
+import { ActivatedRoute } from '@angular/router';
+
 
 import Swal from 'sweetalert2';
+import { toggleFullscreen } from 'src/app/Interfaces/fullscreen';
 
 @Component({
   selector: 'app-main',
@@ -17,6 +20,7 @@ import Swal from 'sweetalert2';
 })
 export class MainComponent implements OnInit, AfterViewInit, OnDestroy {
   permitido! : boolean;
+  needUpdate : boolean = this.userSevice.UserNeedUpdate();
 
   closeSesion : boolean = false;
 
@@ -28,18 +32,28 @@ export class MainComponent implements OnInit, AfterViewInit, OnDestroy {
   }
   //user datas
   datos = JSON.parse(localStorage.getItem('407h')!)
-  auth0! : Auth  
+  auth0! : Auth
   $User!  : any
 
   // items data
   itemName : string = localStorage.getItem("Item")!;
 
-  constructor(private userSevice : UserService, private route : Router, private render : Renderer2){
+  constructor(private userSevice : UserService, private route : Router, private render : Renderer2, private Activatedroute : ActivatedRoute){
     if(!this.itemName){
       this.itemName = "horarios"
     }
+    // recibe la señal eviada por query params para  cambiar de color al item de deuda
+    this.Activatedroute.queryParams.subscribe(params =>{
+      if (params["ItemName"] != undefined){
+        try {
+          this.btnActive(4, 'deudas')
+        } catch (error) {
+
+        };
+      }
+    });
   }
-  
+
   @ViewChild('items') Items! : ElementRef;
 
   public btnActive(i: number, name: string) {
@@ -122,8 +136,24 @@ export class MainComponent implements OnInit, AfterViewInit, OnDestroy {
 
 
   ngOnInit() {
-    this.UserExits();    
-    
+    // Swal.fire({
+    //   title : "FullScreen",
+    //   text: "¿Desea activar la pantalla completa?",
+    //   showCancelButton: true,
+    //   showConfirmButton: true,
+    //   confirmButtonText: "Activar",
+    //   cancelButtonText: "No, cancelar",
+    //   confirmButtonColor: "green",
+    //   cancelButtonColor: "red"
+    // }).then((result)=>{
+    //   if(result.isConfirmed){
+    //     toggleFullscreen()
+    //     localStorage.setItem("full", '{"active": true}')
+    //   }
+    // })
+
+    this.UserExits();
+
     //ruta hija
     if(this.itemName == "horarios"){
       this.route.navigate(['/usuario/horario'])
@@ -139,10 +169,13 @@ export class MainComponent implements OnInit, AfterViewInit, OnDestroy {
         this.userSevice.logOut();
         this.alerta.fire({
           icon: 'warning',
-          text: 'Tiempo de inicio de sesión agotado'
+          text: 'Tiempo de inicio de sesión agotado',
+          timer: 3500,
+          toast: true
         })
       }
     })
+    //cambios en el parametro de la url
   }
 
   ngOnDestroy(): void {
@@ -156,7 +189,7 @@ export class MainComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('container') container! : ElementRef;
   @ViewChild('vistaOpciones') VistaOpciones! : ElementRef;
   @ViewChild('userCont') UserCont! : ElementRef;
-  
+
   ToogleIN = false;
   activeUserOptions = false;
 
@@ -181,7 +214,7 @@ export class MainComponent implements OnInit, AfterViewInit, OnDestroy {
 
       const ITEMS = this.Items.nativeElement
 
-      const USER_CONT = this.UserCont.nativeElement // cont donde se ejecuta evento  
+      const USER_CONT = this.UserCont.nativeElement // cont donde se ejecuta evento
       const VISTA_OPCIONES = this.VistaOpciones.nativeElement // vista de opciones
 
       DOM.listen(USER_CONT, 'click', showHideOptions)
@@ -201,44 +234,48 @@ export class MainComponent implements OnInit, AfterViewInit, OnDestroy {
 
     //funcion for events
     function hideShowLateral (e: any){
-      let element = e
-      console.log(element);
+      let element = e.target
+      // console.log(element);
       try {
         element = e.path[0]
         console.log(element);
       } catch (error) {
-        
+
       }
-      
-      
+
+
       e.preventDefault();
       e.stopPropagation()
+      //si esta extendido la barra, lo contrae
       if(TOOGLE){
-        DOM.addClass(LATERAL, 'hide')        
+        DOM.addClass(LATERAL, 'hide')
         DOM.removeClass(CONTAINER, 'lateral-active')
         TOOGLE = false;
-          // console.log(ITEMS.children[0])
-          for (let j = 0; j < 8; j++){
-            DOM.addClass(ITEMS.children[j], 'tooltip')
-          }
+        // console.log(ITEMS.children[0])
+        for (let j = 0; j < 8; j++){
+          DOM.addClass(ITEMS.children[j], 'tooltip')
+          console.log(ITEMS.children[j])
 
-        if(e.path[0].children[0]){
-          element = e.path[0].children[0]
-        }else{
-          element = e.path[0]
+          DOM.addClass(ITEMS.children[j].children[1], "hide-tooltip")
         }
+
+        // if(e.path[0].children[0]){
+        //   element = e.path[0].children[0]
+        // }else{
+        //   element = e.path[0]
+        // }
         // console.log(element)
         DOM.removeClass(element, 'rotate-pointer')
         // DOM.removeClass(element, 'fa-chevron-left')
         // e.path[0].childNodes[0].className = 'fa-solid fa-chevron-right';
-      }else{
+      }else{ //si esta contraido la barra, lo extiende
         DOM.removeClass(LATERAL, 'hide')
         DOM.addClass(CONTAINER, 'lateral-active')
-        if(e.path[0].children[0]){
-          element = e.path[0].children[0]
-        }else{
-          element = e.path[0]
-        }
+        // if(e.path[0].children[0]){
+        //   // element = e.path[0].children[0]
+        // }else{
+        //   element = e.path[0]
+        // }
         // console.log(element)
         // DOM.addClass(element, 'fa-chevron-left')
         DOM.addClass(element, 'rotate-pointer')
@@ -246,11 +283,13 @@ export class MainComponent implements OnInit, AfterViewInit, OnDestroy {
 
           for (let j = 0; j < 8; j++){
             DOM.removeClass(ITEMS.children[j], 'tooltip')
+            console.log(ITEMS.children[j].children[1])
           }
         // e.path[0].childNodes[0].className = 'fa-solid fa-chevron-left';
       }
       // console.log(e.path[0])
-    }    
+    }
+
     }
   }
 }

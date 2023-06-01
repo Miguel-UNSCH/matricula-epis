@@ -1,0 +1,77 @@
+.input-group{
+  padding: 12px 6px;
+  margin-top: 12px;
+  position: relative;
+}
+input[type="date"]::-webkit-calendar-picker-indicator {
+  background: url(https://cdn-icons-png.flaticon.com/512/2886/2886665.png) no-repeat;
+  background-size: contain;
+  width: 16px;
+  height: 16px;
+  opacity: 1;
+  filter: invert(1);
+}
+
+input[type="date"].correct:required::after {
+    position: absolute;
+    right: 30px;
+    top: 11px;
+    content: "✔";
+    color: #2cff00;
+    font-size: 20px;
+    transition: ease-in-out 300ms;
+}
+input[type="date"]:required::after {
+  transition: ease-in-out 300ms;
+  position: absolute;
+  right: 30px;
+  top: 11px;
+  content: "✘";
+  color: #ff0000;
+  font-size: 20px;
+}
+
+.input-group input[type="date"]{
+  background-color: #2e3644ba;
+  color: var(--button-color);
+  padding: 14px 7px !important;
+  outline: none !important;
+  border-radius: 6px;
+  width: 100%;
+  position: relative;
+  z-index: 0;
+  border: none;
+  font-size: 14px;
+}
+.input-group input[type="date"]::placeholder{
+  color: transparent;
+}
+
+input[type="date"]:placeholder-shown ~ .placeholder-txt{
+  top: 22px;
+  cursor: text;
+  font-size: 16px;
+}
+
+.input-group .placeholder-txt{
+  transition: 0.2s;
+  position: absolute;
+  display: block;
+  color: bisque;
+  padding-left: 8px;
+  background: transparent;
+  top: -10px;
+  font-size: 14px;
+}
+
+.input-group input[type="date"]:focus ~ .placeholder-txt{
+  transition: 0.2s;
+  top: -10px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #62ff009a;
+}
+
+.input-group .placeholder-txt span{
+  color: rgb(255, 64, 64);
+}

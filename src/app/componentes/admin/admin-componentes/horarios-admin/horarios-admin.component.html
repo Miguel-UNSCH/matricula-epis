@@ -1,0 +1,93 @@
+<div class="container">
+  <div class="title-schedule">
+    <h1>Registro de horario de laboratorios</h1>
+  </div>
+  <form [formGroup]="horarioAdminForm">
+    <div class="row">
+      <div class="col-md-3">
+        <app-input-select formControlName="docente"
+          IdName="docente"
+          placeholderText="Docente"
+          [IsRequired]="true"
+        ></app-input-select
+        ><span>hola</span>
+      </div>
+      <div class="col-md-3">
+        <app-input-select formControlName="codigoCurso"
+          IdName="curso-cod"
+          placeholderText="Código del curso"
+          [IsRequired]="true"
+        ></app-input-select>
+      </div>
+      <div class="col-md-3">
+        <app-input-text formControlName="nombreCurso"
+          IdName="curso-name"
+          placeholderText="Nombre del curso"
+          [IsRequired]="true"
+          class="docente-input"
+        ></app-input-text>
+      </div>
+      <div class="col-md-3">
+        <app-color-input formControlName="colorCurso" [IsRequired]="true" placeholderText="color del Curso"></app-color-input>
+      </div>
+      <div class="col-md-3">
+        <app-input-select formControlName="diaCurso"
+        [IsRequired]="true" placeholderText="Dia del horario"
+        IdName="diaCurso" defValue="Seleccione un día"
+        [ListContent]="daysOfSelector"></app-input-select>
+      </div>
+      <div class="col-md-3">
+        <app-input-select formControlName="horaInicio"
+        [IsRequired]="true" placeholderText="Hora de inicio"
+        IdName="horaInicio" defValue="Seleccione una hora"
+        [ListContent]="hoursOfSelector"></app-input-select>
+      </div>
+      <div class="col-md-2">
+        <app-input-select formControlName="horaFin"
+        [IsRequired]="true" placeholderText="Hora de fin"
+        IdName="horaFin" defValue="Seleccione una hora"
+        [ListContent]="hoursOfSelector"></app-input-select>
+      </div>
+      <div class="col-md-2">
+        <app-input-text formControlName="vacantes" [IsRequired]="true" placeholderText="Número de vacantes" IdName="vacantes"></app-input-text>
+      </div>
+      <div class="col">
+        <app-custom-btn iconClass="fa fa-solid fa-save" [funtionDefault]="SaveSchedule" textBtn="Guardar Horario" [disabled]="!horarioAdminForm.valid"></app-custom-btn>
+      </div>
+      <div class="col">
+        <!-- tabla para resgitro de cursos -->
+        <div class="card-schedule">
+          <p-table [value]="cursos" [totalRecords]="cursos.length" [paginator]="true" [rows]="5" [rowsPerPageOptions]="[5, 10, 20, 100]"
+            styleClass="p-datatable-gridlines" [tableStyle]="{ 'min-width': '1000px' }"
+            currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} cursos" [showCurrentPageReport]="true">
+            <ng-template pTemplate="header">
+              <tr>
+                <th style="width: 20px;" class="header-table">N°</th>
+                <th class="header-table">Nombre del curso</th>
+                <th style="width: 150px" class="header-table">Código del Curso</th>
+                <th style="width: 150px" class="header-table">Color</th>
+                <th style="width: 300px" class="header-table">Acciones</th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-curso>
+              <tr>
+                <td>{{curso.num}}</td>
+                <td>{{ curso.courseName }}</td>
+                <td>{{ curso.courseCode }}</td>
+                <td>
+                  <div class="course-color" [style.background-color]="curso.courseColor"></div>
+                </td>
+                <td class="detail-col">
+                  <button class="btn detail-see-btn"> <i class="fa fa-solid fa-eye"></i> Ver detalles</button>
+                  <button class="btn delete-btn"> <i class="fa fa-solid fa-trash-alt"></i> Eliminar</button>
+                </td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </div>
+
+      </div>
+    </div>
+  </form>
+</div>
+

@@ -20,13 +20,38 @@
             </div>
         </div>
         <div class="inicio">
-            <div class="button" id="button" (click)="loginWithGoogle()">
+            <div class="button" id="button" (click)="loginWithGoogle()" *ngIf="true">
                 <i class="fa-brands fa-google"></i>
                 <span>Iniciar sesión con Google</span>
             </div>
-            <div class="description">
+            <div class="card" *ngIf="false">
+              <form action="">
+                <h4 class="title-login">
+                  <hr class="title-line">
+                  <div class="title-label-container">
+
+                  </div>
+                  <label class="title-label">LOGIN</label>
+                </h4>
+                <app-input-text
+                placeholderText="USUARIO"
+                IdName="username"></app-input-text>
+                <app-input-password [IsRequired]="false"
+                placeholderText="CONTRASEÑA"
+                IdName="password"></app-input-password>
+                <app-custom-btn
+                textBtn="INICIAR SESIÓN" iconClass="fa-solid fa-right-to-bracket"></app-custom-btn>
+              </form>
+              <p class="card-footer">Created by Franklin figueroa Perez.</p>
+            </div>
+            <!-- para google -->
+            <div class="description" *ngIf="true">
                 <p><strong>Nota: </strong>Iniciar sesión con correo institucional, de lo contrario tu matrícula a los distintos laboratorios no serán efectivos, además evalúe bien las instrucciones de uso presentadas en el sistema.</p>
             </div>
+            <!-- para login user and password -->
+            <div class="description" *ngIf="false">
+              <p><strong>Nota: </strong>Iniciar sesión con tus credenciales proporcionados por tu centro de estudiantes o tu dirección de escuela, recuerda modificar de inmediato tus credenciales por defecto y actualizar tus datos.</p>
+          </div>
         </div>
         <div class="ceis">
             <div class="text">

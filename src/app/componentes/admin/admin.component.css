@@ -1,0 +1,146 @@
+.admin-container
+{
+    height: 100%;
+    width: 100%;
+    background-color: #7C7C7C;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1rem;
+}
+
+.admin-container .admin-header
+{
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    gap: .8rem;
+    font-size: 1.3rem;
+}
+
+.admin-container .admin-separador
+{
+    background-color: #404040;
+    height: 90%;
+    width: 3px;
+    border-radius: 1.5px;
+}
+
+.admin-container .admin-desc
+{
+    display: flex;
+    gap: .4rem;
+    align-items: center;
+    font-size: 1rem;
+    color: #dadada;
+}
+
+.icon
+{
+    color: #FFC736;
+}
+.icon-verifid{
+    color: #00ff44;
+}
+
+.main
+{
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    padding: .5rem;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    background-color: #404040;
+    border-radius: .5em;
+    color: antiquewhite;
+}
+
+.main .title h2
+{
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.4rem;
+}
+
+.main .content
+{
+    width: 100%;
+}
+
+.btn-ver-detalles
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.p-button
+{
+    height: 30px;
+    font-size: 10px;
+    font-weight: 600;
+}
+
+.p-button.p-button-outlined
+{
+    background-color: transparent;
+    color: #FFC736;
+    border: 1px solid;
+}
+
+.p-button.p-button-outlined:hover
+{
+    background-color: #FFC736;
+    color: rgb(255, 255, 255);
+    border: none;
+}
+
+.p-button.p-button-info
+{
+    color: #dadada;
+    background-color: rgb(29, 55, 199);
+    border: none;
+}
+
+.p-button.p-button-info:hover
+{
+    color: #fffcfc;
+    background-color: rgb(51, 78, 230);
+    border: none;
+}
+
+.p-button.p-button-danger
+{
+    color: #dadada;
+    background-color: rgb(187, 25, 46);
+    border: none;
+}
+
+.p-button.p-button-danger:hover
+{
+    color: #fcfcfc;
+    background-color: rgb(218, 38, 62);
+    border: none;
+}
+
+.btn-justificado,
+.btn-pendiente
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.j-left
+{
+    justify-content: start;
+}
+
+.heroimage{
+    border-radius: 50%;
+    background-color: #3f415b;
+}

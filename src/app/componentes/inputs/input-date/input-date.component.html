@@ -1,0 +1,10 @@
+<div class="input-group">
+    <input #fecha [id]="IdName || 'name'" [placeholder]="placeholderText || ''"
+    type="date" [value]=""
+    (keyup)="changeValue($event)"
+    (change)="changeValue($event)"
+    [required] = "IsRequired" >
+    <label [for]="IdName || 'name'" class="placeholder-txt">{{ placeholderText || ''}}
+        <span *ngIf="IsRequired">(*)</span>
+    </label>
+</div>

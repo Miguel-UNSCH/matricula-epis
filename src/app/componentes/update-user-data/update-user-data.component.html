@@ -1,0 +1,81 @@
+<div class="maincontainer">
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <div class="text-header">
+                    !Bienvenido al sistema de matricula <span>SIMALAB-EPIS</span>!
+                </div>
+              <div class="text-container">
+                <h1>¡Actualiza tus datos!<span class="animate-text" (animationend)="onAnimationEnd($event)">&#160;</span></h1>
+              </div>
+
+            </div>
+            <div class="card-body">
+                <hr>
+                <form >
+                    <div class="per-card-2">
+                    <div class="card-image">
+                        <ul>
+                            <li><img appImagenRota  [srcCustom]="'../../../assets/img/defaultProfile.png'" [src]="userProfile ||'../../assets/img/logo-icades.png'"></li>
+                            <li>
+                                <div class="per-name">{{USERNAME || "USERNAME"}}</div>
+                                <div class="per-position">Estudiante</div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-content">
+                        <div class="form__group field">
+                            <input type="input" class="form__field" placeholder="Código" name="codigo" id='codigo' required enabled="true" />
+                            <label for="codigo" class="form__label">Código (*)</label>
+                        </div>
+                        <div class="form__group field">
+                            <select type="input" class="form__field" placeholder="Ciclo referencial" name="ciclo" id='ciclo' required >
+                                <option selected disabled value="0">Seleccione</option>
+                                <option value="1">primero</option>
+                                <option value="2">segundo</option>
+                                <option value="3">tercero</option>
+                                <option value="4">cuarto</option>
+                                <option value="5">quinto</option>
+                                <option value="6">sexto</option>
+                                <option value="7">septimo</option>
+                                <option value="8">octavo</option>
+                                <option value="9">noveno</option>
+                                <option value="10">decimo</option>
+                            </select>
+                            <label for="ciclo" class="form__label">Ciclo referencial (*)</label>
+                            <span><button class="info-btn-ciclo" (click)="openModal()"><i class="fa-sharp fa-solid fa-circle-info fa-lg"></i></button></span>
+                            <div class="modal" *ngIf="showModal">
+                                <div class="modal-overlay" (click)="closeModal()"></div>
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h2>{{ title }}</h2>
+                                    <button class="close-button" (click)="closeModal()">Cerrar</button>
+                                  </div>
+                                  <div class="modal-body">
+                                    <picture class="img-container">
+                                        <img src="../../../assets/img/ficha de muestra.png" alt="xd">
+                                    </picture>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form__group field">
+                            <input type="input" class="form__field" placeholder="N° Celular" name="name" id='name' required [disabled]="false" />
+                            <label for="name" class="form__label">N° Celular</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="submit-btn">
+                    <a class="button"  role="button" (click)="updateDatos()">
+                        <span>ACTUALIZAR</span>
+                        <div class="icon">
+                            <i class="fa-solid fa-arrows-rotate fa-spin-pulse"></i>
+                            <i class="fa fa-check"></i>
+                        </div>
+                    </a>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

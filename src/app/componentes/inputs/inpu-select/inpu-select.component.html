@@ -1,0 +1,13 @@
+<div class="input-container">
+    <div #select class="input-group">
+        <select [id]="IdName" class="select-input"
+        (change)="changeText($event)"
+        >
+            <option [value]="defValue" selected disabled>{{defValue}}</option>
+            <option class="select-option" [value]="option.value" *ngFor="let option of ListContent" [class.active-option]="option.value == content">{{option.text}}</option>
+        </select>
+        <label [for]="IdName || 'name'" class="placeholder-txt">{{placeholderText || ''}}
+            <span *ngIf="IsRequired">(*)</span>
+        </label>
+    </div>
+</div>

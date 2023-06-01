@@ -1,0 +1,11 @@
+<div class="input-container">
+  <div  #texto class="input-group">
+      <input [id]="IdName || 'name'" #muestrario type="color" (input) = "changeColor($event)">
+      <input #colorname [id]="IdName || 'name'" type="text" class="color-code" disabled
+      [placeholder]="placeholderText || ''"
+      [required] = "IsRequired" value="#2e3644" >
+      <label [for]="IdName || 'name'" class="placeholder-txt">{{placeholderText || 'defaultText'}}
+          <span *ngIf="IsRequired">(*)</span>
+      </label>
+  </div>
+</div>

@@ -1,0 +1,82 @@
+.input-container{
+  margin: auto;
+}
+.input-group{
+  padding: 12px 6px;
+  margin-top: 12px;
+  position: relative;
+}
+
+.input-group input[type="color"]{
+    border-radius: 7px 0px 0px 7px;
+    width: auto;
+    border: 0;
+    height: 47px;
+    min-width: 70%;
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    background-color: #2e3644 ;
+    -moz-appearance: none;
+    padding: 0 !important;
+}
+
+.input-group.requerido::after {
+transition: ease-in-out 300ms;
+position: absolute;
+right: 15px;
+top: 22px;
+content: "✘";
+color: #ff0000;
+font-size: 20px;
+}
+
+.input-group.requerido.correcto::after {
+transition: ease-in-out 300ms;
+position: absolute;
+right: 15px;
+top: 22px;
+content: "✔";
+color: #00ff0d;
+font-size: 20px;
+}
+
+.input-group input[type="text"]::placeholder{
+  color: transparent;
+}
+
+input[type="text"]:placeholder-shown ~ .placeholder-txt{
+  top: 22px;
+  cursor: text;
+  font-size: 16px;
+}
+
+.input-group .placeholder-txt{
+  transition: 0.2s;
+  position: absolute;
+  display: block;
+  color: bisque;
+  padding-left: 8px;
+  background: transparent;
+  top: -10px;
+  font-size: 14px;
+}
+
+.input-group input[type="text"]:focus ~ .placeholder-txt{
+  transition: 0.2s;
+  top: -10px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #62ff009a;
+}
+
+.input-group .placeholder-txt span{
+  color: #c91d1d;
+}
+.color-code{
+  position: absolute;
+  border: none;
+  width: 30%;
+  padding: 13.5px 7px !important;
+  background-color: #2e3644 ;
+  border-radius: 0px 7px 7px 0px;
+}

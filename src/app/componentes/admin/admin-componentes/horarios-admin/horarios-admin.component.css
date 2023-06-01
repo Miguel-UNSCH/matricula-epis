@@ -1,0 +1,129 @@
+.container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.title-schedule{
+  position: relative;
+  margin-bottom: .5rem;
+}
+.title-schedule h1{
+  text-align: center;
+  font-size: 20px;
+  font-family: "Zen Dots";
+  font-weight: 200;
+  color: var(--button-color);
+}
+.row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+.col{
+  width: 100%;
+  margin-bottom: .75rem;
+}
+
+.col-md-4{
+  position: relative;
+  width: calc((100%)/4);
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.col-md-3{
+  position: relative;
+  width: calc((100%)/3);
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.col-md-2{
+  position: relative;
+  width: calc((100%)/2);
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+
+@media screen and (max-width: 1200px) {
+  .col-md-3 {
+    width: calc((100%)/2)
+  }
+  @media screen and (max-width: 720px) {
+    .col-md-3 {
+      width: 100%;
+    }
+    .col-md-2{
+      width: 100%;
+    }
+  }
+
+}
+
+.docente-input{
+  width: calc(100%/3 - 40px);
+  background-color: aquamarine;
+}
+
+.course-color{
+    padding: 6px 6px;
+    border-radius: 6px;
+    height: 100%;
+}
+
+/*tarjeta del horario*/
+.card-schedule{
+  margin-top: 6px;
+  background-color: #7c7c7c;
+  padding: 6px;
+  border-radius: 6px;
+}
+p-table{
+  border-radius: 6px;
+}
+/*botones de acción*/
+.detail-col{
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+.btn{
+  padding: 7px 5px;
+  margin: 0px 5px;
+  border-radius: 5px;
+  align-self: center;
+  border: none;
+}
+.btn:hover{
+  padding: 7px 8px;
+  cursor: pointer;
+}
+
+.detail-see-btn{
+  background-color: var(--blue-700);
+}
+.detail-see-btn:hover{
+  background-color: var(--blue-500);
+}
+.delete-btn{
+  background-color: var(--red-700);
+}
+.delete-btn:hover{
+  background-color: var(--red-500);
+}
+/*el stilo del header de la tabla*/
+.header-table{
+  background-color: #2d2d2d !important;
+  text-align: center !important;
+}

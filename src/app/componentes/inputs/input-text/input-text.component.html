@@ -1,0 +1,14 @@
+<div class="input-container">
+    <div  #texto class="input-group">
+        <input [id]="IdName || 'name'" type="text"
+        [placeholder]="placeholderText || ''"
+        (keyup)="changeText($event)"
+        (keydown)="changeText($event)"
+        [required] = "IsRequired"
+        [disabled]="isDisabled"
+        >
+        <label [for]="IdName || 'name'" class="placeholder-txt">{{placeholderText || ''}}
+            <span *ngIf="IsRequired">(*)</span>
+        </label>
+    </div>
+</div>

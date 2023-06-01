@@ -1,0 +1,8 @@
+<div class="input-group">
+  <input #time [id]="IdName || 'name'" [placeholder]="placeholderText || ''"   type="time" [value]=""
+  [required]="IsRequired"
+  (change)="cambioHora($event)">
+  <label [for]="IdName || 'name'" class="placeholder-txt">{{ placeholderText || ''}}
+      <span *ngIf="IsRequired">(*)</span>
+  </label>
+</div>

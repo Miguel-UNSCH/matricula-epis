@@ -17,7 +17,8 @@
     --bg-color-barra-lateral: #1E1E1E;
     --bg-color-navbar: #313131;
     --separator-color: #5e5a5a;
-}   
+    --button-disabled: #ae9d84;
+}
 *{
     margin: 0;
     padding: 0;

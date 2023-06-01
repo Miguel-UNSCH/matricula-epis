@@ -56,6 +56,13 @@ export class DeudasComponent{
       fechaDeOcurrencia: '23/12/22 17:00 - 19:00',
       estado: true,
       monto: 20 
+    },
+    {
+      numero: 8,
+      motivo: 'reunión general',
+      fechaDeOcurrencia: '23/12/22 17:00 - 19:00',
+      estado: false,
+      monto: 20 
     }
   ]
 

@@ -1,5 +1,6 @@
 <app-forbidden *ngIf="!permitido"></app-forbidden>
 <app-loading [text]="'Cerrando sesión'" *ngIf="closeSesion"></app-loading>
+<app-update-user-data [userProfile]="$User.photoURL" *ngIf="needUpdate"></app-update-user-data>
 <div *ngIf="permitido" class="app">
     <main class="main">
         <div #container class="container">
@@ -56,7 +57,7 @@
                             <p>Mis<a style="color: transparent;">_</a>cursos</p>
                             <span>&#160;</span>
                             <i></i>
-                    </div>
+                        </div>
                         <!-- end tooltip-rigth -->
                     </div>
                     <div (click)="btnActive(4, 'deudas')" class="item tooltip" [routerLink]="['/usuario/deudas']" [class.active]="itemName == 'deudas'">
@@ -105,17 +106,18 @@
                 <div class="navbar">
                     <div class="title">
                         <img class="logo" src="../../../assets/logosistemas.png" alt="logo-sistemas">
-                        <span class="app-name">SISTEMA DE MATRÍCULA EPIS UNSCH                             
-                        <span class="timer">{{minutesToDday < 10 ? '0' + minutesToDday : minutesToDday}} min : {{secondsToDday < 10 ? '0' + secondsToDday : secondsToDday}} seg</span> 
+                        <span class="app-name">SISTEMA DE MATRÍCULA EPIS UNSCH
+                        <span class="timer">{{minutesToDday < 10 ? '0' + minutesToDday : minutesToDday}} min : {{secondsToDday < 10 ? '0' + secondsToDday : secondsToDday}} seg</span>
                         </span>
-                        
+
                     </div>
                     <div #userCont class="user">
                         <div class="separator-column"></div>
                         <div #userBar class="user-info">
-                            <div class="photo" id="photo">
-                                <img [src]="$User?.photoURL ||'../../assets/img/logo-icades.png'"
-                                    alt="foto-perfil">
+                            <div>
+                                <picture class="photo" id="photo">
+                                    <img appImagenRota [srcCustom]="'../../../assets/img/defaultProfile.png'"  [src]="$User.photoURL" alt="foto-perfil">
+                                </picture>
                             </div>
                             <div class="desc">
                                 <div class="name">

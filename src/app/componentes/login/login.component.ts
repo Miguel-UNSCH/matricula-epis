@@ -130,7 +130,7 @@ export class LoginComponent implements OnInit {
             timer: 3500
           })
           this.userService.VerificarUser(false)
-          this.route.navigate(['/usuario']);
+          this.route.navigate(['/forbidden']);
         } 
       }
   }

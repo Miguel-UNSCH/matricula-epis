@@ -134,7 +134,7 @@
     float: left;
 }
 
-.barra-lateral .items .item.active .right span {
+.barra-lateral .items .item.span {
     background-color: #393939;
     display: flex;
     top: 0;
@@ -145,7 +145,7 @@
     text-align: end;
 }
 
-.barra-lateral .items .item .right span {
+.barra-lateral .items .item  span {
     background-color: var(--bg-color-barra-lateral);
     display: flex;
     top: 0;
@@ -164,6 +164,13 @@
         width: 0;
     }
 }
+
+.item:hover.tooltip.active:hover .fa-solid{
+   width: 64px;
+}
+.item.tooltip{
+    width: 64px;
+}
 /**/
 
 /*tooltip rigth*/
@@ -174,14 +181,13 @@
 }
 
 .tooltip .right {
-    min-width:50px; 
     top:50%;
     left:100%;
     margin-left:20px;
     transform:translate(0, -50%);
     padding:10px 20px;
     color:#FFFFFF;
-    background-color:#393939;
+    background-color:#046dae;
     font-weight:normal;
     font-size:13px;
     border-radius:8px;
@@ -199,7 +205,7 @@
 .tooltip .right p {
     font-family: 'Zen Dots';
     color: var(--logo-text-color);
-    font-size: 16px;
+    font-size: 16px;    
 }
 
 .tooltip .right i {
@@ -220,8 +226,11 @@
     left:0;
     top:50%;
     transform:translate(50%,-50%) rotate(-45deg);
-    background-color:#333333;
+    background-color:#046dae;
     box-shadow:0 1px 8px rgba(0,0,0,0.5);
+}
+.hide-tooltip{
+    display: none;
 }
 /* tooltip end*/
 

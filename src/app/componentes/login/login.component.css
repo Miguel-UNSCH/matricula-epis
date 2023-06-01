@@ -2,7 +2,7 @@
 {
     font-family: 'Poppins', sans-serif;
 
-    background: linear-gradient(rgba(31, 31, 31, 0.75), rgba(31, 31, 31, 0.75)), url('../../../assets/fondo.jpg');
+    background: linear-gradient(rgba(31, 31, 31, 0.534), rgba(31, 31, 31, 0.534)), url('../../../assets/fondo.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -179,4 +179,70 @@
     color: #ffffff;
     display: flex;
     text-align: center;
+}
+
+/*card login*/
+:root {
+  font-size: 20px;
+  box-sizing: inherit;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+p {
+  margin: 0;
+}
+p:not(:last-child) {
+  margin-bottom: 1.5em;
+}
+.card {
+  width: 350px;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-width: 500px;
+  height: 300px;
+  padding: 35px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.222);
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.147);
+  backdrop-filter: blur(4px);
+}
+.card-footer {
+  font-size: 0.65em;
+  color: rgb(133, 133, 160);
+}
+
+.title-login{
+  font-size: 16px;
+  font-weight: 600;
+  filter:opacity(80%);
+  position: relative;
+}
+.title-label-container{
+  width: auto;
+}
+
+.title-line{
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  color: #858585;
+  margin-bottom: 1.5rem;
+  margin-top: -.25rem;
+}
+
+.title-label{
+  position: absolute;
+  top: -11px;
+  text-align: center;
+  right: 40%;
+  background-color: #d2dade;
+  padding-left: 5px;
+  padding-right: 5px;
+  backdrop-filter: blur(15px);
+  color: #000;
+  border-radius: 7px;
 }

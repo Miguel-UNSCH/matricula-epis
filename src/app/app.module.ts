@@ -27,6 +27,21 @@ import {MatTableModule} from '@angular/material/table';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { PrimeNgModule } from './prime-ng/prime-ng.module';
+import { AdminComponent } from './componentes/admin/admin.component';
+import { TabViewModule } from 'primeng/tabview';
+import { HorariosAdminComponent } from './componentes/admin/admin-componentes/horarios-admin/horarios-admin.component';
+import { UpdateUserDataComponent } from './componentes/update-user-data/update-user-data.component';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { InputTextComponent } from './componentes/inputs/input-text/input-text.component';
+import { InputDateComponent } from './componentes/inputs/input-date/input-date.component';
+import { InpuSelectComponent } from './componentes/inputs/inpu-select/inpu-select.component';
+import { CustomBtnComponent } from './componentes/inputs/custom-btn/custom-btn.component';
+import { InputHourComponent } from './componentes/inputs/input-hour/input-hour.component';
+import { ColorInputComponent } from './componentes/inputs/color-input/color-input.component';
+import { ImagenRotaDirective } from './directivas/imagen-rota.directive';
+import { AdminResourcesComponent } from './componentes/admin/admin-componentes/admin-resources/admin-resources.component';
+import { InputPasswordComponent } from './componentes/inputs/input-password/input-password.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +55,18 @@ import { PrimeNgModule } from './prime-ng/prime-ng.module';
     HorarioComponent,
     DeudasComponent,
     PagosComponent,
+    AdminComponent,
+    HorariosAdminComponent,
+    UpdateUserDataComponent,
+    InputTextComponent,
+    InputDateComponent,
+    InpuSelectComponent,
+    CustomBtnComponent,
+    InputHourComponent,
+    ColorInputComponent,
+    ImagenRotaDirective,
+    AdminResourcesComponent,
+    InputPasswordComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,7 +82,10 @@ import { PrimeNgModule } from './prime-ng/prime-ng.module';
     MatTableModule,
     MatFormFieldModule,
     MatPaginatorModule,
-    PrimeNgModule
+    PrimeNgModule,
+    TabViewModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

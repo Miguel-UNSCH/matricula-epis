@@ -19,6 +19,7 @@ import pdfFonts from 'pdfmake/build/vfs_fonts';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 import { LOGO_SISTEMAS, LOGO_UNSCH } from 'src/app/Interfaces/imgbase64/imgbase64';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -32,7 +33,7 @@ export class MatriculaComponent implements OnInit {
   Cursos: CURSOS[] = datos;
   CursosAgregados: CURSOS[] = []; // aqui se guardan los cursos agregados
 
-  constructor(private userSevice: UserService, private render: Renderer2) {
+  constructor(private userSevice: UserService, private render: Renderer2, private route : Router) {
     if (
       localStorage.getItem('curso') !== undefined &&
       localStorage.getItem('curso')
@@ -45,7 +46,10 @@ export class MatriculaComponent implements OnInit {
   }
 
   cambiarDeudas(){
+    //envia señal por query params al padre para cabiar el estilo
     localStorage.setItem('Item', "deudas");
+    const data = {"ItemName": "deudas"};
+    this.route.navigate(['/usuario/deudas'], { queryParams: data})
   }
 
   agregar(dato: any) {
