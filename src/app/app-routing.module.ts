@@ -11,6 +11,7 @@ import { AdminComponent } from './componentes/admin/admin.component';
 import { AuthGuardGuard } from './Guards/auth-guard.guard';
 import { ForbiddenComponent } from './componentes/forbidden/forbidden.component';
 import { LoginGuard } from './Guards/login.guard';
+import { UsuarioComponent } from './componentes/usuario/usuario.component';
 
 const routes: Routes = [
   {
@@ -48,6 +49,10 @@ const routes: Routes = [
       {
         path: 'deudas',
         component: DeudasComponent
+      },
+      {
+        path: 'usuario',
+        component: UsuarioComponent
       },
       {
         path: "admin",

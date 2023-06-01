@@ -42,6 +42,7 @@ import { ColorInputComponent } from './componentes/inputs/color-input/color-inpu
 import { ImagenRotaDirective } from './directivas/imagen-rota.directive';
 import { AdminResourcesComponent } from './componentes/admin/admin-componentes/admin-resources/admin-resources.component';
 import { InputPasswordComponent } from './componentes/inputs/input-password/input-password.component';
+import { UsuarioComponent } from './componentes/usuario/usuario.component';
 
 @NgModule({
   declarations: [
@@ -55,18 +56,6 @@ import { InputPasswordComponent } from './componentes/inputs/input-password/inpu
     HorarioComponent,
     DeudasComponent,
     PagosComponent,
-    AdminComponent,
-    HorariosAdminComponent,
-    UpdateUserDataComponent,
-    InputTextComponent,
-    InputDateComponent,
-    InpuSelectComponent,
-    CustomBtnComponent,
-    InputHourComponent,
-    ColorInputComponent,
-    ImagenRotaDirective,
-    AdminResourcesComponent,
-    InputPasswordComponent,
   ],
   imports: [
     BrowserModule,
@@ -78,6 +67,7 @@ import { InputPasswordComponent } from './componentes/inputs/input-password/inpu
     SweetAlert2Module.forRoot(),
     provideDatabase(() => getDatabase()),
     HttpClientModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     MatTableModule,
     MatFormFieldModule,
